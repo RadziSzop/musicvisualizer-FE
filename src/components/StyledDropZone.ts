@@ -1,18 +1,14 @@
 import styled from 'styled-components';
 interface Props {
-  isFocused: boolean;
   isDragAccept: boolean;
   isDragReject: boolean;
 }
 const getColor = (props: Props) => {
   if (props.isDragAccept) {
-    return '#00e676';
+    return '#2196f3';
   }
   if (props.isDragReject) {
     return '#ff1744';
-  }
-  if (props.isFocused) {
-    return '#2196f3';
   }
   return '#eeeeee';
 };
@@ -33,5 +29,6 @@ export const StyledDropZoneContainer = styled.div<Props>`
   background-color: transparent;
   color: #bdbdbd;
   outline: none;
-  transition: border 0.24s ease-in-out;
+  transition: border 0.5s;
+  border-radius: 4px;
 `;
