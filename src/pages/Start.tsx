@@ -3,6 +3,7 @@ import { DropZone } from '../components/DropZone/DropZone';
 import Player from 'react-modern-audio-player';
 import { Wave } from '@foobar404/wave';
 import { Visualizer } from '../components/Visualizer/Visualizer';
+import { AnimatePresence, delay, motion } from 'framer-motion';
 
 export const Start = () => {
   const [canvasSize, setCanvasSize] = useState({
@@ -21,7 +22,6 @@ export const Start = () => {
   const [playList, setPlayList] = useState([
     {
       name: 'music - 1',
-      writer: 'react-modern-audio-player',
       img: 'https://cdn.pixabay.com/photo/2021/11/04/05/33/dome-6767422_960_720.jpg',
       src: 'https://cdn.pixabay.com/audio/2022/08/23/audio_d16737dc28.mp3',
       id: 1,
@@ -37,19 +37,12 @@ export const Start = () => {
     const newPlaylist = submitedFile.map((file, index) => {
       return {
         name: file.name,
-        writer: 'react-modern-audio-player',
         img: 'https://cdn.pixabay.com/photo/2021/11/04/05/33/dome-6767422_960_720.jpg',
         src: URL.createObjectURL(file),
         id: index + 1,
       };
     });
-    newPlaylist.push({
-      name: 'music - 1',
-      writer: 'react-modern-audio-player',
-      img: 'https://cdn.pixabay.com/photo/2021/11/04/05/33/dome-6767422_960_720.jpg',
-      src: 'https://cdn.pixabay.com/audio/2022/08/23/audio_d16737dc28.mp3',
-      id: newPlaylist[newPlaylist.length - 1].id + 1,
-    });
+
     setPlayList(newPlaylist);
     audioRef.current.crossOrigin = 'anonymous';
     const wave = new Wave(audioRef.current, canvasRef.current);
@@ -111,26 +104,34 @@ export const Start = () => {
 
   return (
     <>
-      {!submitedFile && <DropZone setSubmitedFile={setSubmitedFile} />}
+      <AnimatePresence>{!submitedFile && <DropZone setSubmitedFile={setSubmitedFile} />}</AnimatePresence>
+
       {submitedFile && <Visualizer canvasRef={canvasRef} canvasSize={canvasSize} setCanvasSize={setCanvasSize} />}
       {submitedFile && (
-        <Player
-          playList={playList}
-          audioRef={audioRef}
-          activeUI={{
-            all: true,
-          }}
-          placement={{
-            player: 'bottom',
-          }}
-          // placement={{
-          //   player: 'bottom',
-          //   playList: 'bottom',
-          //   volumeSlider: 'bottom',
-          // }}
-          audioInitialState={{ curPlayId: 1 }}
-          key={null}
-        />
+        // TODO: Add disappearing of player
+        <motion.div
+          style={{ position: 'fixed', left: '0px' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: 0.4 } }}
+        >
+          <Player
+            playList={playList}
+            audioRef={audioRef}
+            activeUI={{
+              all: true,
+            }}
+            placement={{
+              player: 'bottom',
+            }}
+            // placement={{
+            //   player: 'bottom',
+            //   playList: 'bottom',
+            //   volumeSlider: 'bottom',
+            // }}
+            audioInitialState={{ curPlayId: 1 }}
+            key={null}
+          />
+        </motion.div>
       )}
     </>
   );

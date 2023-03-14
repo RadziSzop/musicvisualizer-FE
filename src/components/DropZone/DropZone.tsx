@@ -52,9 +52,14 @@ export const DropZone = ({ setSubmitedFile }: Props) => {
       {...getRootProps({ isDragAccept, isDragReject })}
       variants={containerVariatns}
       animate={animationControler}
-      transition={{
-        type: 'spring',
-        stiffness: 5,
+      // transition={{
+      //   type: 'spring',
+      //   stiffness: 50,
+      // }}
+      exit={{
+        opacity: 0,
+        y: ['-50%', '-47.5%', '-47.5%'],
+        x: ['-50%', '-50%'],
       }}
     >
       <input {...getInputProps()} />

@@ -15,18 +15,28 @@ const getColor = (props: Props) => {
 
 export const StyledDropZoneContainer = styled.div<Props>`
   cursor: pointer;
+  position: absolute;
   box-sizing: border-box;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
+  /* inset: 2rem; */
+  /* max-height: 720px; */
+  /* align-self: center; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* max-width: 1240px;
+  max-height: 720px; */
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
   width: 100%;
   height: 100%;
-  max-width: 1240px;
-  max-height: 720px;
+
   border-width: 2px;
   border-radius: 2px;
   border-color: ${(props) => getColor(props)};
@@ -36,4 +46,9 @@ export const StyledDropZoneContainer = styled.div<Props>`
   outline: none;
   transition: border 0.5s;
   border-radius: 4px;
+  @media (min-height: 760px) {
+    & {
+      max-height: 720px;
+    }
+  }
 `;
