@@ -9,5 +9,6 @@ export const StyledAppContainer = styled.div`
   width: 100%;
   height: 100%;
   margin: auto;
+  position: relative;
   padding: 2rem;
 `;
