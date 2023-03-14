@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
-import './App.css';
+
 import { Route, Routes } from 'react-router-dom';
 import { Start } from './pages/Start';
+import { StyledAppContainer } from './components/StyledAppContainer';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Start />} />
-    </Routes>
+    <StyledAppContainer>
+      <Routes>
+        <Route path="/" element={<Start />} />
+      </Routes>
+    </StyledAppContainer>
   );
 }
 
