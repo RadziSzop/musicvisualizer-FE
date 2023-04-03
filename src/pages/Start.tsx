@@ -3,9 +3,14 @@ import { DropZone } from '../components/DropZone/DropZone';
 import Player from 'react-modern-audio-player';
 import { Wave } from '@foobar404/wave';
 import { Visualizer } from '../components/Visualizer/Visualizer';
-import { AnimatePresence, delay, motion } from 'framer-motion';
-
-export const Start = () => {
+import { AnimatePresence, motion } from 'framer-motion';
+import { visualizationOptions } from '../types/settings';
+import { waveOptions } from '../App';
+interface Props {
+  settings: waveOptions[];
+  setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
+}
+export const Start = ({ setSettings, settings }: Props) => {
   const [canvasSize, setCanvasSize] = useState({
     height: window.innerHeight - 100,
     width: window.innerWidth,
@@ -47,59 +52,47 @@ export const Start = () => {
     audioRef.current.crossOrigin = 'anonymous';
     const wave = new Wave(audioRef.current, canvasRef.current);
 
-    wave.addAnimation(
-      new wave.animations.Wave({
-        frequencyBand: 'base',
-        rounded: true,
-        count: 15,
+    settings.map((waveOptions) => {
+      console.log(waveOptions);
 
-        fillColor: { gradient: ['rgb(119, 119, 119)', 'rgb(124, 124, 124)'], rotate: 44 },
-        lineColor: 'white',
-        lineWidth: 15,
-      }),
-    );
-    wave.addAnimation(
-      new wave.animations.Wave({
-        frequencyBand: 'lows',
-        rounded: true,
-        count: 20,
-        fillColor: { gradient: ['rgb(196, 197, 197)', 'rgb(68, 68, 68)', 'rgb(165, 165, 165)'], rotate: 300 },
-        lineColor: 'white',
-        lineWidth: 15,
-      }),
-    );
-
-    wave.addAnimation(
-      new wave.animations.Wave({
-        frequencyBand: 'mids',
-        rounded: true,
-        count: 35,
-        fillColor: { gradient: [' rgb(51, 51, 51)', 'rgb(172, 172, 172)'], rotate: 263 },
-        lineColor: 'white',
-        lineWidth: 15,
-      }),
-    );
-    wave.addAnimation(
-      new wave.animations.Wave({
-        frequencyBand: 'highs',
-        rounded: true,
-        count: 35,
-        fillColor: { gradient: [' rgb(80, 80, 80)', 'rgb(197, 197, 199)'], rotate: 352 },
-        lineColor: 'white',
-        lineWidth: 15,
-      }),
-    );
-
-    wave.addAnimation(
-      new wave.animations.Shine({
-        lineColor: 'white',
-        frequencyBand: 'lows',
-        rotate: 100,
-        offset: false,
-        lineWidth: 15,
-        rounded: true,
-      }),
-    );
+      wave.addAnimation(
+        new wave.animations[waveOptions.type]({
+          ...waveOptions.options,
+        }),
+      );
+    });
+    // wave.addAnimation(
+    //   new wave.animations.Wave({
+    //     lineColor: 'white',
+    //     lineWidth: 10,
+    //     fillColor: { gradient: ['#FF9A8B', '#FF6A88', '#FF99AC'] },
+    //     mirroredX: true,
+    //     count: 5,
+    //     rounded: true,
+    //     frequencyBand: 'base',
+    //   }),
+    // );
+    // wave.addAnimation(
+    //   new wave.animations.Wave({
+    //     lineColor: 'white',
+    //     lineWidth: 10,
+    //     fillColor: { gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'] },
+    //     mirroredX: true,
+    //     count: 60,
+    //     rounded: true,
+    //   }),
+    // );
+    // wave.addAnimation(
+    //   new wave.animations.Wave({
+    //     lineColor: 'white',
+    //     lineWidth: 10,
+    //     fillColor: { gradient: ['#FBDA61', '#FF5ACD'] },
+    //     mirroredX: true,
+    //     count: 25,
+    //     rounded: true,
+    //     frequencyBand: 'highs',
+    //   }),
+    // );
   }, [submitedFile]);
 
   return (
