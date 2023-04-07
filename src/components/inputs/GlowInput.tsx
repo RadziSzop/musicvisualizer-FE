@@ -1,19 +1,19 @@
 import { visualizationOptions } from '../../types/settings';
 interface Props {
-  settings: visualizationOptions;
-  setSettings: React.Dispatch<React.SetStateAction<visualizationOptions>>;
+  waveOption: visualizationOptions;
+  setWaveOption: React.Dispatch<React.SetStateAction<visualizationOptions>>;
 }
-export const GlowInput = ({ setSettings, settings }: Props) => {
+export const GlowInput = ({ setWaveOption, waveOption }: Props) => {
   return (
     <>
       <input
         type={'text'}
         min={1}
         step={1}
-        value={settings.glow?.strength}
+        value={waveOption.glow?.strength}
         onChange={(e) => {
           const newValue = e.target.value.replace(/[^\d]+/g, '');
-          setSettings((prevState) => {
+          setWaveOption((prevState) => {
             const newState: visualizationOptions = {
               ...prevState,
               glow: { strength: Number(newValue), color: prevState.glow?.color || '#aaaaaa' },
@@ -24,9 +24,9 @@ export const GlowInput = ({ setSettings, settings }: Props) => {
       />
       <input
         type={'color'}
-        value={settings.glow?.color}
+        value={waveOption.glow?.color}
         onChange={(e) => {
-          setSettings((prevState) => {
+          setWaveOption((prevState) => {
             const newState: visualizationOptions = {
               ...prevState,
               glow: { strength: prevState.glow?.strength || 10, color: e.target.value },

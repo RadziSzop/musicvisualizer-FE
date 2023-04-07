@@ -10,11 +10,11 @@ interface Props {
 }
 export const Settings = ({ setSettings, settings }: Props) => {
   const [selectedType, setSelectedType] = useState<visualizationType>();
-  console.log(selectedType);
   return (
     <div>
       <VisualizationSelect type="Arcs" setSelectedType={setSelectedType} selectedType={selectedType} />
       <VisualizationSelect type="Circles" setSelectedType={setSelectedType} selectedType={selectedType} />
+      <VisualizationSelect type="Cubes" setSelectedType={setSelectedType} selectedType={selectedType} />
       <VisualizationSettings selectedType={selectedType} settings={settings} setSettings={setSettings} />
     </div>
   );

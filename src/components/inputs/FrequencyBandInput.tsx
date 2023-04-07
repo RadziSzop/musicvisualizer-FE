@@ -1,42 +1,42 @@
-import { visualizationOptions } from '../../types/settings';
 import { StyledFrequencyOptionContainer, StyledFrequencySelectContainer } from './StyledFrequencyBandInput';
+import { visualizationOptions } from '../../types/settings';
 interface Props {
-  settings: visualizationOptions;
-  setSettings: React.Dispatch<React.SetStateAction<visualizationOptions>>;
+  waveOption: visualizationOptions;
+  setWaveOption: React.Dispatch<React.SetStateAction<visualizationOptions>>;
 }
-export const FrequencyBandInput = ({ setSettings, settings }: Props) => {
+export const FrequencyBandInput = ({ setWaveOption, waveOption }: Props) => {
   return (
     <>
       <h3>Line Width</h3>
       <StyledFrequencySelectContainer>
         <StyledFrequencyOptionContainer
-          isSelected={settings.frequencyBand === 'highs'}
+          isSelected={waveOption.frequencyBand === 'highs'}
           onClick={() => {
-            setSettings((prevState) => ({ ...prevState, frequencyBand: 'highs' }));
+            setWaveOption((prevState) => ({ ...prevState, frequencyBand: 'highs' }));
           }}
         >
           Highs
         </StyledFrequencyOptionContainer>
         <StyledFrequencyOptionContainer
-          isSelected={settings.frequencyBand === 'mids'}
+          isSelected={waveOption.frequencyBand === 'mids'}
           onClick={() => {
-            setSettings((prevState) => ({ ...prevState, frequencyBand: 'mids' }));
+            setWaveOption((prevState) => ({ ...prevState, frequencyBand: 'mids' }));
           }}
         >
           Mids
         </StyledFrequencyOptionContainer>
         <StyledFrequencyOptionContainer
-          isSelected={settings.frequencyBand === 'lows'}
+          isSelected={waveOption.frequencyBand === 'lows'}
           onClick={() => {
-            setSettings((prevState) => ({ ...prevState, frequencyBand: 'lows' }));
+            setWaveOption((prevState) => ({ ...prevState, frequencyBand: 'lows' }));
           }}
         >
           Lows
         </StyledFrequencyOptionContainer>
         <StyledFrequencyOptionContainer
-          isSelected={settings.frequencyBand === 'base'}
+          isSelected={waveOption.frequencyBand === 'base'}
           onClick={() => {
-            setSettings((prevState) => ({ ...prevState, frequencyBand: 'base' }));
+            setWaveOption((prevState) => ({ ...prevState, frequencyBand: 'base' }));
           }}
         >
           Base

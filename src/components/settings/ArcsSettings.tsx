@@ -1,19 +1,19 @@
-import { IArcsOptions } from '@foobar404/wave';
 import { useState } from 'react';
-import { visualizationOptions } from '../../types/settings';
-import { CountInput } from '../inputs/CountInput/CountInput';
-import { DiameterInput } from '../inputs/DiameterInput/DiameterInput';
 import { FrequencyBandInput } from '../inputs/FrequencyBandInput';
 import { GlowInput } from '../inputs/GlowInput';
-import { LineWidthInput } from '../inputs/LineWidthInput';
-import { RoundedInput } from '../inputs/RoundedInput';
 import { LineColorInput } from '../inputs/LineColorInput';
 import { waveOptions } from '../../App';
-
+import { PositionInput } from '../inputs/PositionInput/PositionInput';
+import { IArcsOptions } from '@foobar404/wave';
+import { NumberInput } from '../inputs/NumberInput/NumberInput';
+import { BooleanInput } from '../inputs/BooleanInput/BooleanInput';
+import { ColorInput } from '../inputs/ColorInput/ColorInput';
+import { motion } from 'framer-motion';
 interface Props {
   settings: waveOptions[];
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
 }
+
 export const ArcsSettings = ({ setSettings, settings }: Props) => {
   const [arcsSettings, setArcsSettings] = useState<IArcsOptions>({});
   console.log(arcsSettings);
@@ -21,19 +21,22 @@ export const ArcsSettings = ({ setSettings, settings }: Props) => {
   return (
     <div>
       <hr />
-      <CountInput settings={arcsSettings} setSettings={setArcsSettings} />
+      <ColorInput /> <hr />
+      {/* <NumberInput waveOption={arcsSettings} setWaveOption={setArcsSettings} field="count" header="Count" />
       <hr />
-      <DiameterInput settings={arcsSettings} setSettings={setArcsSettings} />
+      <NumberInput waveOption={arcsSettings} setWaveOption={setArcsSettings} field="diameter" header="Diameter" />
       <hr />
-      <FrequencyBandInput settings={arcsSettings} setSettings={setArcsSettings} />
+      <FrequencyBandInput waveOption={arcsSettings} setWaveOption={setArcsSettings} />
       <hr />
-      <LineWidthInput settings={arcsSettings} setSettings={setArcsSettings} />
+      <NumberInput waveOption={arcsSettings} setWaveOption={setArcsSettings} field="lineWidth" header="Line Width" />
       <hr />
-      <LineColorInput settings={arcsSettings} setSettings={setArcsSettings} />
+      <LineColorInput waveOption={arcsSettings} setWaveOption={setArcsSettings} />
       <hr />
-      <GlowInput settings={arcsSettings} setSettings={setArcsSettings} />
+      <GlowInput waveOption={arcsSettings} setWaveOption={setArcsSettings} />
       <hr />
-      <RoundedInput settings={arcsSettings} setSettings={setArcsSettings} />
+      <BooleanInput waveOption={arcsSettings} setWaveOption={setArcsSettings} field="rounded" header="Rounded" />
+      <hr />
+      <PositionInput waveOption={arcsSettings} setWaveOption={setArcsSettings} />
       <input
         type="button"
         value="Save"
@@ -43,7 +46,7 @@ export const ArcsSettings = ({ setSettings, settings }: Props) => {
           });
           setArcsSettings({});
         }}
-      />
+      /> */}
     </div>
   );
 };

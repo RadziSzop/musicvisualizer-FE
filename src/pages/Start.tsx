@@ -54,13 +54,31 @@ export const Start = ({ setSettings, settings }: Props) => {
 
     settings.map((waveOptions) => {
       console.log(waveOptions);
-
       wave.addAnimation(
         new wave.animations[waveOptions.type]({
           ...waveOptions.options,
         }),
       );
     });
+    wave.addAnimation(new wave.animations.Circles({}));
+    // wave.addAnimation(
+    //   new wave.animations.Cubes({
+    //     bottom: true,
+    //     left: true,
+    //     top: true,
+    //     right: true,
+    //     center: true,
+
+    //     cubeHeight: 20,
+    //     fillColor: { gradient: ['#FF9A8B', '#0059ff'] },
+    //     gap: 20,
+    //     glow: {
+    //       color: 'red',
+    //       strength: 30,
+    //     },
+    //   }),
+    // );
+
     // wave.addAnimation(
     //   new wave.animations.Wave({
     //     lineColor: 'white',

@@ -2,19 +2,19 @@ import { visualizationOptions } from '../../types/settings';
 import { Switch } from '../Switch/Switch';
 import { StyledInputContainer } from './StyledInputs';
 interface Props {
-  settings: visualizationOptions;
-  setSettings: React.Dispatch<React.SetStateAction<visualizationOptions>>;
+  waveOption: visualizationOptions;
+  setWaveOption: React.Dispatch<React.SetStateAction<visualizationOptions>>;
 }
-export const LineColorInput = ({ setSettings, settings }: Props) => {
-  if (typeof settings.lineColor === 'string' || settings.lineColor === undefined) {
+export const LineColorInput = ({ setWaveOption, waveOption }: Props) => {
+  if (typeof waveOption.lineColor === 'string' || waveOption.lineColor === undefined) {
     return (
       <>
         <h3>Line Color</h3>
         <StyledInputContainer>
           <Switch
-            isOn={settings.lineColor !== undefined}
+            isOn={waveOption.lineColor !== undefined}
             changeState={() => {
-              setSettings((prevState) => {
+              setWaveOption((prevState) => {
                 const newState: visualizationOptions = {
                   ...prevState,
                   lineColor: prevState.lineColor === undefined ? '#000000' : undefined,
@@ -25,10 +25,10 @@ export const LineColorInput = ({ setSettings, settings }: Props) => {
           />
           <input
             type={'color'}
-            disabled={settings.lineColor === undefined}
-            value={settings.lineColor === undefined ? '#000000' : (settings.lineColor as string)}
+            disabled={waveOption.lineColor === undefined}
+            value={waveOption.lineColor === undefined ? '#000000' : (waveOption.lineColor as string)}
             onChange={(e) => {
-              setSettings((prevState) => {
+              setWaveOption((prevState) => {
                 const newState: visualizationOptions = {
                   ...prevState,
                   lineColor: e.target.value,
