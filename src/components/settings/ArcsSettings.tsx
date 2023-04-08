@@ -19,9 +19,9 @@ export const ArcsSettings = ({ setSettings, settings }: Props) => {
   console.log(arcsSettings);
 
   return (
-    <div>
-      <hr />
-      <ColorInput /> <hr />
+    <>
+      <ColorInput field="count" setWaveOption={setArcsSettings} waveOption={arcsSettings} header="Color Test" />
+      <NumberInput waveOption={arcsSettings} setWaveOption={setArcsSettings} field="diameter" header="Diameter" />
       {/* <NumberInput waveOption={arcsSettings} setWaveOption={setArcsSettings} field="count" header="Count" />
       <hr />
       <NumberInput waveOption={arcsSettings} setWaveOption={setArcsSettings} field="diameter" header="Diameter" />
@@ -47,6 +47,6 @@ export const ArcsSettings = ({ setSettings, settings }: Props) => {
           setArcsSettings({});
         }}
       /> */}
-    </div>
+    </>
   );
 };

@@ -7,7 +7,9 @@ interface Props {
 export const Switch = ({ isOn, changeState }: Props) => {
   return (
     <StyledSwitch
+      as={motion.div}
       isOn={isOn}
+      layout
       onClick={(e) => {
         changeState(e);
       }}

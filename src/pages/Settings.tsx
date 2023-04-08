@@ -4,6 +4,7 @@ import { VisualizationSelect } from '../components/VisualizationSelect/Visualiza
 import { VisualizationSettings } from '../components/VisualizationSettings/VisualizationSettings';
 import { visualizationType, visualizationOptions } from '../types/settings';
 import { waveOptions } from '../App';
+import { LayoutGroup, motion } from 'framer-motion';
 interface Props {
   settings: waveOptions[];
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
@@ -11,11 +12,13 @@ interface Props {
 export const Settings = ({ setSettings, settings }: Props) => {
   const [selectedType, setSelectedType] = useState<visualizationType>();
   return (
-    <div>
-      <VisualizationSelect type="Arcs" setSelectedType={setSelectedType} selectedType={selectedType} />
-      <VisualizationSelect type="Circles" setSelectedType={setSelectedType} selectedType={selectedType} />
-      <VisualizationSelect type="Cubes" setSelectedType={setSelectedType} selectedType={selectedType} />
-      <VisualizationSettings selectedType={selectedType} settings={settings} setSettings={setSettings} />
-    </div>
+    <motion.div style={{ display: 'flex', flexDirection: 'column' }}>
+      <LayoutGroup>
+        <VisualizationSelect type="Arcs" setSelectedType={setSelectedType} selectedType={selectedType} />
+        <VisualizationSelect type="Circles" setSelectedType={setSelectedType} selectedType={selectedType} />
+        <VisualizationSelect type="Cubes" setSelectedType={setSelectedType} selectedType={selectedType} />
+        <VisualizationSettings selectedType={selectedType} settings={settings} setSettings={setSettings} />
+      </LayoutGroup>
+    </motion.div>
   );
 };

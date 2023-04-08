@@ -1,3 +1,4 @@
+import { LayoutGroup, motion } from 'framer-motion';
 import { Dispatch, SetStateAction } from 'react';
 import { visualizationOptions } from '../../../types/settings';
 import { Switch } from '../../Switch/Switch';
@@ -27,7 +28,12 @@ export const NumberInput = <T extends visualizationOptions>({
   };
 
   return (
-    <>
+    <motion.div
+      layout
+      transition={{
+        layout: { duration: 0.3 },
+      }}
+    >
       {header && <h3>{header}</h3>}
       <StyledInputContainer>
         <Switch
@@ -46,6 +52,7 @@ export const NumberInput = <T extends visualizationOptions>({
           }}
         />
         <StyledInput
+          as={motion.input}
           type={'text'}
           min={1}
           step={1}
@@ -57,6 +64,6 @@ export const NumberInput = <T extends visualizationOptions>({
           }}
         />
       </StyledInputContainer>
-    </>
+    </motion.div>
   );
 };

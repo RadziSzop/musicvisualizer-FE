@@ -79,38 +79,38 @@ export const Start = ({ setSettings, settings }: Props) => {
     //   }),
     // );
 
-    // wave.addAnimation(
-    //   new wave.animations.Wave({
-    //     lineColor: 'white',
-    //     lineWidth: 10,
-    //     fillColor: { gradient: ['#FF9A8B', '#FF6A88', '#FF99AC'] },
-    //     mirroredX: true,
-    //     count: 5,
-    //     rounded: true,
-    //     frequencyBand: 'base',
-    //   }),
-    // );
-    // wave.addAnimation(
-    //   new wave.animations.Wave({
-    //     lineColor: 'white',
-    //     lineWidth: 10,
-    //     fillColor: { gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'] },
-    //     mirroredX: true,
-    //     count: 60,
-    //     rounded: true,
-    //   }),
-    // );
-    // wave.addAnimation(
-    //   new wave.animations.Wave({
-    //     lineColor: 'white',
-    //     lineWidth: 10,
-    //     fillColor: { gradient: ['#FBDA61', '#FF5ACD'] },
-    //     mirroredX: true,
-    //     count: 25,
-    //     rounded: true,
-    //     frequencyBand: 'highs',
-    //   }),
-    // );
+    wave.addAnimation(
+      new wave.animations.Wave({
+        lineColor: 'white',
+        lineWidth: 10,
+        fillColor: { gradient: ['#FF9A8B', '#FF6A88', '#FF99AC'] },
+        mirroredX: true,
+        count: 5,
+        rounded: true,
+        frequencyBand: 'base',
+      }),
+    );
+    wave.addAnimation(
+      new wave.animations.Wave({
+        lineColor: 'white',
+        lineWidth: 10,
+        fillColor: { gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'] },
+        mirroredX: true,
+        count: 60,
+        rounded: true,
+      }),
+    );
+    wave.addAnimation(
+      new wave.animations.Wave({
+        lineColor: 'white',
+        lineWidth: 10,
+        fillColor: { gradient: ['#FBDA61', '#FF5ACD'] },
+        mirroredX: true,
+        count: 25,
+        rounded: true,
+        frequencyBand: 'highs',
+      }),
+    );
   }, [submitedFile]);
 
   return (
