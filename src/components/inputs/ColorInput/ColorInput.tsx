@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useState } from 'react';
-import { ColorInputButtonGroupContainer, ColorInputContainer, ColorPicker } from './StyledColorInput';
+import { Dispatch, SetStateAction } from 'react';
+import { ColorInputContainer } from './StyledColorInput';
 import { AnimatePresence, motion } from 'framer-motion';
 import { visualizationOptions } from '../../../types/settings';
 import { Switch } from '../../Switch/Switch';
@@ -28,7 +28,6 @@ export const ColorInput = <T extends visualizationOptions>({
   defaultColor = '#000000',
   header,
 }: Props<T>) => {
-  console.log(waveOption);
   return (
     <ColorInputContainer as={motion.div} layout>
       {header && <motion.h3>{header}</motion.h3>}

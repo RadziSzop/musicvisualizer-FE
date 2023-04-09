@@ -5,6 +5,7 @@ margin-top: 30px
 `;
 export const ColorInputSettingsContainer = styled.div`
   margin-top: 30px;
+  cursor: pointer;
 `;
 export const ColorInputButtonGroupContainer = styled.div`
   width: 240px;
@@ -26,8 +27,11 @@ interface ColorPickerProps {
   width: string;
   height: string;
   borderRadius?: string;
+  margin?: string;
 }
 export const ColorPicker = styled.input<ColorPickerProps>`
+  /* display: block; */
+  margin: ${({ margin }) => margin || '0.5rem 0px'};
   position: relative;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -50,11 +54,17 @@ export const ColorPicker = styled.input<ColorPickerProps>`
 `;
 interface ColorInputGradientProps {
   backgroundColor: string;
-  rotation: string;
+  rotate: number;
 }
 export const ColorInputGradient = styled.div<ColorInputGradientProps>`
-  width: 100%
+  margin: 1rem 0px;
+  border-radius: 3rem;
+  width: 100%;
   height: 50px;
-  background-image: linear-gradient(${({ rotation }) => rotation}deg, ${({ backgroundColor }) => backgroundColor});
-  `;
+  background-image: linear-gradient(
+    ${({ rotate }) => rotate + 90 || 0}deg,
+    ${({ backgroundColor }) => backgroundColor}
+  );
+`;
 /* background-image: linear-gradient(30deg, rgb(57, 24, 71) , rgb(106, 22, 201)); */
+// background-image: linear-gradient(${({ rotation }) => '30'}deg, ${({ backgroundColor }) => backgroundColor});

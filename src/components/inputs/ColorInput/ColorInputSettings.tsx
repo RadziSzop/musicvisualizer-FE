@@ -52,6 +52,9 @@ export const ColorInputSettings = <T extends visualizationOptions>({
               animate={selectedType === 1 ? { scale: 1.2, backgroundColor: '#3f3f3f' } : { scale: 1 }}
               onClick={() => {
                 setSelectedType(1);
+                setWaveOption((prevState) => {
+                  return { ...prevState, [field]: { gradient: ['#ff00ff', '#ffff00'], rotate: 0 } };
+                });
               }}
               value={'Gradient'}
             />
