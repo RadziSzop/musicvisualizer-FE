@@ -1,7 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { visualizationOptions } from '../../../types/settings';
-import { Gradient } from './Inputs/Gradient';
+import { GradientInput } from './Inputs/GradientInput';
+import { ImageInput } from './Inputs/ImageInput';
+import { SimpleColorInput } from './Inputs/SimpleColorInput';
 import { ColorInputButtonGroupContainer, ColorPicker } from './StyledColorInput';
 interface Props<T extends visualizationOptions> {
   setWaveOption: Dispatch<SetStateAction<T>>;
@@ -70,28 +72,12 @@ export const ColorInputSettings = <T extends visualizationOptions>({
           </ColorInputButtonGroupContainer>
           <AnimatePresence>
             {selectedType === 0 && (
-              <ColorPicker
-                height={'60px'}
-                width={'240px'}
-                as={motion.input}
-                type="color"
-                value={typeof waveOption[field] === 'string' ? String(waveOption[field]) : '#000000'}
-                onChange={(e) => {
-                  setWaveOption((prevState) => {
-                    const newState = {
-                      ...prevState,
-                      [field]: e.target.value,
-                    } as T;
-                    return newState;
-                  });
-                }}
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              />
+              <SimpleColorInput field={field} setWaveOption={setWaveOption} waveOption={waveOption} />
             )}
-            {selectedType === 1 && <Gradient field={field} setWaveOption={setWaveOption} waveOption={waveOption} />}
+            {selectedType === 1 && (
+              <GradientInput field={field} setWaveOption={setWaveOption} waveOption={waveOption} />
+            )}
+            {selectedType === 2 && <ImageInput field={field} setWaveOption={setWaveOption} waveOption={waveOption} />}
           </AnimatePresence>
         </motion.div>
       )}

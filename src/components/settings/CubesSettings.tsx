@@ -2,10 +2,8 @@ import { useState } from 'react';
 
 import { FrequencyBandInput } from '../inputs/FrequencyBandInput';
 import { GlowInput } from '../inputs/GlowInput';
-import { LineColorInput } from '../inputs/LineColorInput';
 import { waveOptions } from '../../App';
 import { ICubesOptions } from '@foobar404/wave';
-import { FillColorInput } from '../inputs/FillColorInput';
 import { PositionInput } from '../inputs/PositionInput/PositionInput';
 import { NumberInput } from '../inputs/NumberInput/NumberInput';
 interface Props {
@@ -31,11 +29,11 @@ export const CubesSettings = ({ setSettings, settings }: Props) => {
         header="Line Width"
       />{' '}
       <hr />
-      <LineColorInput waveOption={cubesOptions} setWaveOption={setCubesOptions} />
+      {/* <LineColorInput waveOption={cubesOptions} setWaveOption={setCubesOptions} /> */}
       <hr />
       <GlowInput waveOption={cubesOptions} setWaveOption={setCubesOptions} />
       <hr />
-      <FillColorInput waveOption={cubesOptions} setWaveOption={setCubesOptions} />
+      {/* <FillColorInput waveOption={cubesOptions} setWaveOption={setCubesOptions} /> */}
       <hr />
       <PositionInput waveOption={cubesOptions} setWaveOption={setCubesOptions} />
       <NumberInput waveOption={cubesOptions} setWaveOption={setCubesOptions} field={'cubeHeight'} />

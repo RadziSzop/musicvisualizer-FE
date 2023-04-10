@@ -2,7 +2,7 @@ import { LayoutGroup, motion } from 'framer-motion';
 import { Dispatch, SetStateAction } from 'react';
 import { visualizationOptions } from '../../../types/settings';
 import { Switch } from '../../Switch/Switch';
-import { StyledInput, StyledInputContainer } from '../StyledInputs';
+import { StyledInput, StyledInputContainer } from './StyledNumberInput';
 interface Props<T extends visualizationOptions> {
   waveOption: T;
   setWaveOption: Dispatch<SetStateAction<T>>;

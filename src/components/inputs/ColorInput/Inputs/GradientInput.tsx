@@ -20,7 +20,7 @@ type FillOption =
   | {
       image: string;
     };
-export const Gradient = <T extends visualizationOptions>({ waveOption, setWaveOption, field }: Props<T>) => {
+export const GradientInput = <T extends visualizationOptions>({ waveOption, setWaveOption, field }: Props<T>) => {
   const [pickers, setPickers] = useState<Picker[]>([{ id: 0 }, { id: 1 }]);
   return (
     <>

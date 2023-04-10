@@ -66,5 +66,15 @@ export const ColorInputGradient = styled.div<ColorInputGradientProps>`
     ${({ backgroundColor }) => backgroundColor}
   );
 `;
+export const StyledTextInput = styled.input`
+  height: 1.75rem;
+  margin-top: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  &:focus {
+    outline: none;
+  }
+`;
+
 /* background-image: linear-gradient(30deg, rgb(57, 24, 71) , rgb(106, 22, 201)); */
 // background-image: linear-gradient(${({ rotation }) => '30'}deg, ${({ backgroundColor }) => backgroundColor});

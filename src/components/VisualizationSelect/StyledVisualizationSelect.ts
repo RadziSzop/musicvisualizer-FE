@@ -1,16 +1,41 @@
 import styled from 'styled-components';
 interface StyledSelectContainerProps {
-  isSelected: boolean;
+  x?: number;
 }
 export const StyledSelectContainer = styled.div<StyledSelectContainerProps>`
-  width: 5rem;
-  height: 5rem;
-  margin: 0.5rem;
-  padding: 0.25rem;
-  border-radius: 1rem;
-  border: 2px solid ${({ isSelected }) => (isSelected ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.5)')};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  width: 200px;
+  height: 100vh;
+  background: #242424;
+  /* background: #b7ba9d; */
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 5vh 0.65rem;
+  @media (max-width: 400px) {
+    width: 46px;
+    padding: 5vh 2px;
+  }
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    width: 6px;
+    background-color: #242424;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #555555;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #606060;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #323232;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-track:hover {
+    background-color: #363636;
+  }
 `;

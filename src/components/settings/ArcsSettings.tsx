@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FrequencyBandInput } from '../inputs/FrequencyBandInput';
 import { GlowInput } from '../inputs/GlowInput';
-import { LineColorInput } from '../inputs/LineColorInput';
 import { waveOptions } from '../../App';
 import { PositionInput } from '../inputs/PositionInput/PositionInput';
 import { IArcsOptions } from '@foobar404/wave';

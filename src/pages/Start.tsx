@@ -60,13 +60,7 @@ export const Start = ({ setSettings, settings }: Props) => {
         }),
       );
     });
-    wave.addAnimation(
-      new wave.animations.Wave({
-        lineColor: { gradient: ['#000000', '#ffffff'] },
-        fillColor: 'blue',
-        lineWidth: 25,
-      }),
-    );
+    wave.addAnimation(new wave.animations.Shine());
     // wave.addAnimation(
     //   new wave.animations.Cubes({
     //     bottom: true,

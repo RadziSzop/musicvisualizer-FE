@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { FrequencyBandInput } from '../inputs/FrequencyBandInput';
 import { GlowInput } from '../inputs/GlowInput';
-import { LineColorInput } from '../inputs/LineColorInput';
 import { waveOptions } from '../../App';
 import { ICirclesOptions } from '@foobar404/wave';
-import { FillColorInput } from '../inputs/FillColorInput';
 import { NumberInput } from '../inputs/NumberInput/NumberInput';
 interface Props {
   settings: waveOptions[];
@@ -30,11 +28,11 @@ export const CirclesSettings = ({ setSettings, settings }: Props) => {
         header="Line Width"
       />
       <hr />
-      <LineColorInput waveOption={circlesSettings} setWaveOption={setCirclesSettings} />
+      {/* <LineColorInput waveOption={circlesSettings} setWaveOption={setCirclesSettings} /> */}
       <hr />
       <GlowInput waveOption={circlesSettings} setWaveOption={setCirclesSettings} />
       <hr />
-      <FillColorInput waveOption={circlesSettings} setWaveOption={setCirclesSettings} />
+      {/* <FillColorInput waveOption={circlesSettings} setWaveOption={setCirclesSettings} /> */}
       <input
         type="button"
         value="Save"

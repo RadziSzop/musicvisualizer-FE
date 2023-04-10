@@ -10,13 +10,12 @@ interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
 }
 export const Settings = ({ setSettings, settings }: Props) => {
-  const [selectedType, setSelectedType] = useState<visualizationType>();
+  const [selectedType, setSelectedType] = useState<visualizationType>('Arcs');
   return (
     <motion.div style={{ display: 'flex', flexDirection: 'column' }}>
       <LayoutGroup>
         <VisualizationSelect type="Arcs" setSelectedType={setSelectedType} selectedType={selectedType} />
-        <VisualizationSelect type="Circles" setSelectedType={setSelectedType} selectedType={selectedType} />
-        <VisualizationSelect type="Cubes" setSelectedType={setSelectedType} selectedType={selectedType} />
+
         <VisualizationSettings selectedType={selectedType} settings={settings} setSettings={setSettings} />
       </LayoutGroup>
     </motion.div>
