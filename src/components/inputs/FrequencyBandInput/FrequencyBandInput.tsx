@@ -1,13 +1,14 @@
 import { StyledFrequencyOptionContainer, StyledFrequencySelectContainer } from './StyledFrequencyBandInput';
-import { visualizationOptions } from '../../types/settings';
+import { visualizationOptions } from '../../../types/settings';
+import { motion } from 'framer-motion';
 interface Props {
   waveOption: visualizationOptions;
   setWaveOption: React.Dispatch<React.SetStateAction<visualizationOptions>>;
 }
 export const FrequencyBandInput = ({ setWaveOption, waveOption }: Props) => {
   return (
-    <>
-      <h3>Line Width</h3>
+    <motion.div layout>
+      <h3>Frequency Band</h3>
       <StyledFrequencySelectContainer>
         <StyledFrequencyOptionContainer
           isSelected={waveOption.frequencyBand === 'highs'}
@@ -42,6 +43,6 @@ export const FrequencyBandInput = ({ setWaveOption, waveOption }: Props) => {
           Base
         </StyledFrequencyOptionContainer>
       </StyledFrequencySelectContainer>
-    </>
+    </motion.div>
   );
 };

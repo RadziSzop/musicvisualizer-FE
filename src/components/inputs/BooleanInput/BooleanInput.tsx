@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
 import { visualizationOptions } from '../../../types/settings';
 import { Switch } from '../../Switch/Switch';
-import { StyledInputContainer } from '../StyledInputs';
-
+import { StyledBooleanInputContainer } from './StyledBooleanInput';
+import { motion } from 'framer-motion';
 interface Props<T extends visualizationOptions> {
   waveOption: T;
   setWaveOption: Dispatch<SetStateAction<T>>;
@@ -17,9 +17,9 @@ export const BooleanInput = <T extends visualizationOptions>({
   header,
 }: Props<T>) => {
   return (
-    <>
-      {header && <h3>{header}</h3>}
-      <StyledInputContainer>
+    <motion.div>
+      {header && <motion.h3 layout>{header}</motion.h3>}
+      <StyledBooleanInputContainer>
         <Switch
           isOn={waveOption[field] !== undefined}
           changeState={() => {
@@ -35,7 +35,7 @@ export const BooleanInput = <T extends visualizationOptions>({
             });
           }}
         />
-      </StyledInputContainer>
-    </>
+      </StyledBooleanInputContainer>
+    </motion.div>
   );
 };

@@ -30,7 +30,7 @@ export const ColorInput = <T extends visualizationOptions>({
 }: Props<T>) => {
   return (
     <ColorInputContainer as={motion.div} layout>
-      {header && <motion.h3>{header}</motion.h3>}
+      {header && <motion.h3 layout>{header}</motion.h3>}
       <Switch
         isOn={waveOption[field] !== undefined}
         changeState={() => {

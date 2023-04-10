@@ -7,6 +7,7 @@ import {
   BsFillDice1Fill,
 } from 'react-icons/bs';
 import { ICubesOptions, ILinesOptions, IWaveOptions } from '@foobar404/wave';
+import { motion } from 'framer-motion';
 type PositionOptions = ICubesOptions | ILinesOptions | IWaveOptions;
 interface Props {
   waveOption: PositionOptions;
@@ -28,7 +29,7 @@ export const PositionInput = ({ setWaveOption, waveOption }: Props) => {
     });
   };
   return (
-    <>
+    <motion.div layout>
       <h3>Position Input</h3>
       <StyledPositionInputContainer>
         <StyledPositionInputDirection
@@ -77,6 +78,6 @@ export const PositionInput = ({ setWaveOption, waveOption }: Props) => {
           <BsCaretDownSquareFill size={40} fill="rgb(122, 121, 121)" />
         </StyledPositionInputDirection>
       </StyledPositionInputContainer>
-    </>
+    </motion.div>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FrequencyBandInput } from '../inputs/FrequencyBandInput';
+import { FrequencyBandInput } from '../inputs/FrequencyBandInput/FrequencyBandInput';
 import { GlowInput } from '../inputs/GlowInput';
 import { waveOptions } from '../../App';
 import { ICirclesOptions } from '@foobar404/wave';

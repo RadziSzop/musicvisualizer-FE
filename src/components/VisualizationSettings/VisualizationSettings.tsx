@@ -13,7 +13,7 @@ interface Props {
 export const VisualizationSettings = ({ selectedType, setSettings, settings }: Props) => {
   return (
     <StyledVisualizationSettingsContainer>
-      <ArcsSettings settings={settings} setSettings={setSettings} />;
+      <ArcsSettings settings={settings} setSettings={setSettings} />
     </StyledVisualizationSettingsContainer>
   );
   // if (selectedType === 'Arcs') {
