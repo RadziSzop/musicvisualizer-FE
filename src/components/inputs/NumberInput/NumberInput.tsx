@@ -2,7 +2,7 @@ import { LayoutGroup, motion } from 'framer-motion';
 import { Dispatch, SetStateAction } from 'react';
 import { visualizationOptions } from '../../../types/settings';
 import { Switch } from '../../Switch/Switch';
-import { StyledNumberInput, StyledInputContainer } from './StyledNumberInput';
+import { StyledNumberInput, StyledInputContainer, StyledNumberInputHeader } from './StyledNumberInput';
 interface Props<T extends visualizationOptions> {
   waveOption: T;
   setWaveOption: Dispatch<SetStateAction<T>>;
@@ -28,13 +28,12 @@ export const NumberInput = <T extends visualizationOptions>({
   };
 
   return (
-    <motion.div
-      layout
-      transition={{
-        layout: { duration: 0.3 },
-      }}
-    >
-      {header && <motion.h3 layout>{header}</motion.h3>}
+    <motion.div layout>
+      {header && (
+        <StyledNumberInputHeader as={motion.h3} layout>
+          {header}
+        </StyledNumberInputHeader>
+      )}
       <StyledInputContainer>
         <Switch
           isOn={waveOption[field] !== undefined}

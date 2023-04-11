@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion';
 import { waveOptions } from '../../../App';
 import { visualizationOptions, visualizationType } from '../../../types/settings';
+import { StyledSaveButton } from './StyledSaveButton';
 
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
@@ -10,7 +12,8 @@ interface Props {
 
 export const SaveButton = ({ setSettings, clearSettings, type, waveSettings }: Props) => {
   return (
-    <input
+    <StyledSaveButton
+      as={motion.input}
       type="button"
       value="Save"
       onClick={() => {

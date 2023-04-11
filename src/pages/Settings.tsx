@@ -5,18 +5,31 @@ import { VisualizationSettings } from '../components/VisualizationSettings/Visua
 import { visualizationType, visualizationOptions } from '../types/settings';
 import { waveOptions } from '../App';
 import { LayoutGroup, motion } from 'framer-motion';
+import { VisualizationSavedSettings } from '../components/VisualizationSavedSettings/VisualizationSavedSettings';
 interface Props {
   settings: waveOptions[];
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
 }
 export const Settings = ({ setSettings, settings }: Props) => {
   const [selectedType, setSelectedType] = useState<visualizationType>('Arcs');
-  return (
-    <motion.div style={{ display: 'flex', flexDirection: 'column' }}>
-      <LayoutGroup>
-        <VisualizationSelect type="Arcs" setSelectedType={setSelectedType} selectedType={selectedType} />
+  const [currentSettings, setCurrentSettings] = useState<visualizationOptions>({});
 
-        <VisualizationSettings selectedType={selectedType} settings={settings} setSettings={setSettings} />
+  return (
+    <motion.div>
+      <LayoutGroup>
+        <VisualizationSavedSettings
+          setSelectedType={setSelectedType}
+          settings={settings}
+          setSettings={setSettings}
+          setCurrentSettings={setCurrentSettings}
+        />
+        <VisualizationSelect setSelectedType={setSelectedType} selectedType={selectedType} />
+        <VisualizationSettings
+          selectedType={selectedType}
+          setSettings={setSettings}
+          currentSettings={currentSettings}
+          setCurrentSettings={setCurrentSettings}
+        />
       </LayoutGroup>
     </motion.div>
   );

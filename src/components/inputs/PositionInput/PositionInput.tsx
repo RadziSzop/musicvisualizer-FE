@@ -1,4 +1,8 @@
-import { StyledPositionInputContainer, StyledPositionInputDirection } from './StyledPositionInput';
+import {
+  StyledPositionInputContainer,
+  StyledPositionInputDirection,
+  StyledPositionInputHeader,
+} from './StyledPositionInput';
 import {
   BsCaretDownSquareFill,
   BsCaretLeftSquareFill,
@@ -30,10 +34,15 @@ export const PositionInput = ({ setWaveOption, waveOption }: Props) => {
   };
   return (
     <motion.div layout>
-      <h3>Position Input</h3>
+      <StyledPositionInputHeader as={motion.h3} layout>
+        Position Input
+      </StyledPositionInputHeader>
       <StyledPositionInputContainer>
         <StyledPositionInputDirection
-          isEnabled={Boolean(waveOption.top)}
+          as={motion.div}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 1.1 }}
+          isEnabled={!waveOption.top}
           position="t"
           onClick={() => {
             changePositionState('top');
@@ -42,7 +51,10 @@ export const PositionInput = ({ setWaveOption, waveOption }: Props) => {
           <BsCaretUpSquareFill size={40} fill="rgb(122, 121, 121)" />
         </StyledPositionInputDirection>
         <StyledPositionInputDirection
-          isEnabled={Boolean(waveOption.left)}
+          as={motion.div}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 1.1 }}
+          isEnabled={!waveOption.left}
           position="l"
           onClick={() => {
             changePositionState('left');
@@ -51,7 +63,10 @@ export const PositionInput = ({ setWaveOption, waveOption }: Props) => {
           <BsCaretLeftSquareFill size={40} fill="rgb(122, 121, 121)" />
         </StyledPositionInputDirection>
         <StyledPositionInputDirection
-          isEnabled={Boolean(waveOption.center)}
+          as={motion.div}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 1.1 }}
+          isEnabled={!waveOption.center}
           position="c"
           onClick={() => {
             changePositionState('center');
@@ -60,7 +75,10 @@ export const PositionInput = ({ setWaveOption, waveOption }: Props) => {
           <BsFillDice1Fill size={40} fill="rgb(122, 121, 121)" />
         </StyledPositionInputDirection>
         <StyledPositionInputDirection
-          isEnabled={Boolean(waveOption.right)}
+          as={motion.div}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 1.1 }}
+          isEnabled={!waveOption.right}
           position="r"
           onClick={() => {
             changePositionState('right');
@@ -69,7 +87,10 @@ export const PositionInput = ({ setWaveOption, waveOption }: Props) => {
           <BsCaretRightSquareFill size={40} fill="rgb(122, 121, 121)" />
         </StyledPositionInputDirection>
         <StyledPositionInputDirection
-          isEnabled={Boolean(waveOption.bottom)}
+          as={motion.div}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 1.1 }}
+          isEnabled={!waveOption.bottom}
           position="b"
           onClick={() => {
             changePositionState('bottom');

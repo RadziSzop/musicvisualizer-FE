@@ -60,7 +60,7 @@ export const Start = ({ setSettings, settings }: Props) => {
         }),
       );
     });
-    wave.addAnimation(new wave.animations.Shine());
+    wave.addAnimation(new wave.animations.Cubes({}));
     // wave.addAnimation(
     //   new wave.animations.Cubes({
     //     bottom: true,

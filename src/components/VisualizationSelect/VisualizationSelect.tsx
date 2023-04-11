@@ -10,10 +10,9 @@ import { TfiShine } from 'react-icons/tfi';
 import { TiWaves } from 'react-icons/ti';
 interface Props {
   selectedType: visualizationType;
-  type: visualizationType;
   setSelectedType: React.Dispatch<React.SetStateAction<visualizationType>>;
 }
-export const VisualizationSelect = ({ type, setSelectedType, selectedType }: Props) => {
+export const VisualizationSelect = ({ setSelectedType, selectedType }: Props) => {
   return (
     <StyledSelectContainer>
       <VisualizationOption header="Arcs" selectedType={selectedType} setSelectedType={setSelectedType} type={'Arcs'}>

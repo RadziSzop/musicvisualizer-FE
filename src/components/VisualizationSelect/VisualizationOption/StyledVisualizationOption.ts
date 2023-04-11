@@ -18,7 +18,7 @@ export const StyledVisualizationOptionHeader = styled.p`
   font-weight: bold;
   /* color: #242424; */
   color: #dbdcd1;
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     display: none;
   }
 `;

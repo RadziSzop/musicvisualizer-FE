@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 export const ColorInputContainer = styled.div`
-margin-top: 30px
-  display: flex;
+  margin-top: 30px;
 `;
 export const ColorInputSettingsContainer = styled.div`
   margin-top: 30px;
@@ -21,6 +20,9 @@ export const ColorInputButtonGroupContainer = styled.div`
     outline: none;
     border: none;
     background-color: #2e2e2e;
+  }
+  @media (max-width: 320px) {
+    width: 200px;
   }
 `;
 interface ColorPickerProps {
@@ -59,7 +61,7 @@ interface ColorInputGradientProps {
 export const ColorInputGradient = styled.div<ColorInputGradientProps>`
   margin: 1rem 0px;
   border-radius: 3rem;
-  width: 100%;
+  width: 98%;
   height: 50px;
   background-image: linear-gradient(
     ${({ rotate }) => rotate + 90 || 0}deg,
@@ -74,7 +76,10 @@ export const StyledTextInput = styled.input`
   &:focus {
     outline: none;
   }
+  @media (max-width: 320px) {
+    width: 200px;
+  }
 `;
-
-/* background-image: linear-gradient(30deg, rgb(57, 24, 71) , rgb(106, 22, 201)); */
-// background-image: linear-gradient(${({ rotation }) => '30'}deg, ${({ backgroundColor }) => backgroundColor});
+export const StyledColorInputHeader = styled.h3`
+  margin: 0px 0px 1rem 0px;
+`;

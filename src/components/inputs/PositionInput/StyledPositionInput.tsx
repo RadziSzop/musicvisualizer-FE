@@ -19,5 +19,9 @@ export const StyledPositionInputDirection = styled.div<StyledPositionInputDirect
   height: 100%;
   & > svg {
     fill: ${({ isEnabled }) => (isEnabled ? '#474646' : '')};
+    transition: fill 0.2s;
   }
+`;
+export const StyledPositionInputHeader = styled.h3`
+  margin: 0px 0px 1rem 0px;
 `;

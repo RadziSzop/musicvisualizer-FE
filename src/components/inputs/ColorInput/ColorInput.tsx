@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { ColorInputContainer } from './StyledColorInput';
+import { ColorInputContainer, StyledColorInputHeader } from './StyledColorInput';
 import { AnimatePresence, motion } from 'framer-motion';
 import { visualizationOptions } from '../../../types/settings';
 import { Switch } from '../../Switch/Switch';
@@ -30,7 +30,11 @@ export const ColorInput = <T extends visualizationOptions>({
 }: Props<T>) => {
   return (
     <ColorInputContainer as={motion.div} layout>
-      {header && <motion.h3 layout>{header}</motion.h3>}
+      {header && (
+        <StyledColorInputHeader as={motion.h3} layout>
+          {header}
+        </StyledColorInputHeader>
+      )}
       <Switch
         isOn={waveOption[field] !== undefined}
         changeState={() => {

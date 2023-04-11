@@ -11,7 +11,7 @@ export const StyledSelectContainer = styled.div<StyledSelectContainerProps>`
   left: 0;
   top: 0;
   padding: 5vh 0.65rem;
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     width: 46px;
     padding: 5vh 2px;
   }
