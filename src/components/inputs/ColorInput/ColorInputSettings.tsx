@@ -4,12 +4,14 @@ import { visualizationOptions } from '../../../types/settings';
 import { GradientInput } from './Inputs/GradientInput';
 import { ImageInput } from './Inputs/ImageInput';
 import { SimpleColorInput } from './Inputs/SimpleColorInput';
-import { ColorInputButtonGroupContainer, ColorPicker } from './StyledColorInput';
+import { ColorInputButtonGroupContainer } from './StyledColorInput';
 interface Props<T extends visualizationOptions> {
   setWaveOption: Dispatch<SetStateAction<T>>;
   waveOption: T;
   field: keyof T;
   isEnabled: boolean;
+  setSelectedType: Dispatch<SetStateAction<number | null>>;
+  selectedType: number | null;
 }
 const formVariants = {
   hidden: {
@@ -29,13 +31,13 @@ export const ColorInputSettings = <T extends visualizationOptions>({
   setWaveOption,
   waveOption,
   isEnabled,
+  selectedType,
+  setSelectedType,
 }: Props<T>) => {
-  const [selectedType, setSelectedType] = useState(4);
   return (
     <>
       {isEnabled === true && (
         <motion.div variants={formVariants} initial="hidden" animate="visible">
-          {/* <motion.div> */}
           <ColorInputButtonGroupContainer as={motion.div}>
             <motion.input
               type="button"
@@ -53,9 +55,10 @@ export const ColorInputSettings = <T extends visualizationOptions>({
               type="button"
               animate={selectedType === 1 ? { scale: 1.2, backgroundColor: '#3f3f3f' } : { scale: 1 }}
               onClick={() => {
+                console.log('click');
                 setSelectedType(1);
                 setWaveOption((prevState) => {
-                  return { ...prevState, [field]: { gradient: ['#ff00ff', '#ffff00'], rotate: 0 } };
+                  return { ...prevState, [field]: { gradient: ['#0be9f9', '#6d17ee'], rotate: 0 } };
                 });
               }}
               value={'Gradient'}

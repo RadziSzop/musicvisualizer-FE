@@ -6,8 +6,8 @@ interface Props {
   children: ReactNode;
   header: string;
   type: visualizationType;
-  selectedType: visualizationType;
-  setSelectedType: React.Dispatch<React.SetStateAction<visualizationType>>;
+  selectedType: visualizationType | 'general';
+  setSelectedType: React.Dispatch<React.SetStateAction<visualizationType | 'general'>>;
 }
 export const VisualizationOption = ({ children, header, type, selectedType, setSelectedType }: Props) => {
   return (

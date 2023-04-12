@@ -1,4 +1,3 @@
-import { Wave } from '@foobar404/wave';
 import { useState } from 'react';
 import { VisualizationSelect } from '../components/VisualizationSelect/VisualizationSelect';
 import { VisualizationSettings } from '../components/VisualizationSettings/VisualizationSettings';
@@ -11,7 +10,7 @@ interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
 }
 export const Settings = ({ setSettings, settings }: Props) => {
-  const [selectedType, setSelectedType] = useState<visualizationType>('Arcs');
+  const [selectedType, setSelectedType] = useState<visualizationType | 'general'>('Arcs');
   const [currentSettings, setCurrentSettings] = useState<visualizationOptions>({});
 
   return (

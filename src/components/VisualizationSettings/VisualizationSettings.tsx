@@ -13,9 +13,10 @@ import { TurntableSettings } from '../settings/TurntableSettings';
 import { WaveSettings } from '../settings/WaveSettings';
 
 import { StyledVisualizationSettingsContainer } from './StyledVisualizationSettings';
+import { GeneralSettings } from '../settings/GeneralSettings';
 
 interface Props {
-  selectedType: visualizationType | undefined;
+  selectedType: visualizationType | 'general';
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;
   setCurrentSettings: React.Dispatch<React.SetStateAction<visualizationOptions>>;
@@ -114,14 +115,7 @@ export const VisualizationSettings = ({ selectedType, setSettings, currentSettin
           />
         )}
       </AnimatePresence>
+      <AnimatePresence>{selectedType === 'general' && <GeneralSettings />}</AnimatePresence>
     </StyledVisualizationSettingsContainer>
   );
-  // if (selectedType === 'Arcs') {
-  // }
-  // if (selectedType === 'Circles') {
-  //   return <CirclesSettings settings={settings} setSettings={setSettings} />;
-  // }
-  // if (selectedType === 'Cubes') {
-  //   return <CubesSettings settings={settings} setSettings={setSettings} />;
-  // }
 };

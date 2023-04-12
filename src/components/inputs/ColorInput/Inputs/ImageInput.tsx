@@ -1,4 +1,4 @@
-import { Dispatch, Fragment, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { visualizationOptions } from '../../../../types/settings';
 import { StyledTextInput } from '../StyledColorInput';
 interface Props<T extends visualizationOptions> {

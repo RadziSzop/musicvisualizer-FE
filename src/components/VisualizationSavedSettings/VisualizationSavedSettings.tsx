@@ -10,7 +10,7 @@ import {
   StyledVisualizationSavedSettingsItem,
 } from './StyledVisualizationSavedSettings';
 interface Props {
-  setSelectedType: React.Dispatch<React.SetStateAction<visualizationType>>;
+  setSelectedType: React.Dispatch<React.SetStateAction<visualizationType | 'general'>>;
   settings: waveOptions[];
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   setCurrentSettings: React.Dispatch<React.SetStateAction<visualizationOptions>>;

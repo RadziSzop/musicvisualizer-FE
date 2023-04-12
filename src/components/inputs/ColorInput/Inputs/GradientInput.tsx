@@ -85,26 +85,28 @@ export const GradientInput = <T extends visualizationOptions>({ waveOption, setW
                 });
               }}
             />
-            <IoMdTrash
-              size="30"
-              fill="#4a4a4a"
-              cursor="pointer"
-              onClick={() => {
-                setWaveOption((prevState) => {
-                  const newGradient = {
-                    gradient: [...(prevState[field] as { gradient: string[] }).gradient],
-                    rotate: (prevState[field] as { rotate: number }).rotate,
-                  };
-                  newGradient.gradient.splice(picker.id, 1);
-                  return { ...prevState, [field]: newGradient };
-                });
-                setPickers((prevState) => {
-                  const newState = [...prevState];
-                  newState.splice(picker.id, 1);
-                  return newState;
-                });
-              }}
-            />
+            {(waveOption[field] as { gradient: string[] }).gradient.length > 2 && (
+              <IoMdTrash
+                size="30"
+                fill="#4a4a4a"
+                cursor="pointer"
+                onClick={() => {
+                  setWaveOption((prevState) => {
+                    const newGradient = {
+                      gradient: [...(prevState[field] as { gradient: string[] }).gradient],
+                      rotate: (prevState[field] as { rotate: number }).rotate,
+                    };
+                    newGradient.gradient.splice(picker.id, 1);
+                    return { ...prevState, [field]: newGradient };
+                  });
+                  setPickers((prevState) => {
+                    const newState = [...prevState];
+                    newState.splice(picker.id, 1);
+                    return newState;
+                  });
+                }}
+              />
+            )}
           </Fragment>
         );
       })}

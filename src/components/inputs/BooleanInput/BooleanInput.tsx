@@ -3,14 +3,14 @@ import { visualizationOptions } from '../../../types/settings';
 import { Switch } from '../../Switch/Switch';
 import { StyledBooleanInputContainer, StyledBooleanInputHeader } from './StyledBooleanInput';
 import { motion } from 'framer-motion';
-interface Props<T extends visualizationOptions> {
+interface Props<T extends visualizationOptions | { width: number; height: number; background: string }> {
   waveOption: T;
   setWaveOption: Dispatch<SetStateAction<T>>;
   field: keyof T;
   header?: string;
 }
 
-export const BooleanInput = <T extends visualizationOptions>({
+export const BooleanInput = <T extends visualizationOptions | { width: number; height: number; background: string }>({
   waveOption,
   setWaveOption,
   field,

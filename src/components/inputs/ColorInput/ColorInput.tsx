@@ -1,19 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { ColorInputContainer, StyledColorInputHeader } from './StyledColorInput';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { visualizationOptions } from '../../../types/settings';
 import { Switch } from '../../Switch/Switch';
 import { ColorInputSettings } from './ColorInputSettings';
 
-// type FillOption =
-//   | string
-//   | {
-//       gradient: string[];
-//       rotate?: number;
-//     }
-//   | {
-//       image: string;
-//     };
 interface Props<T extends visualizationOptions> {
   waveOption: T;
   setWaveOption: Dispatch<SetStateAction<T>>;
@@ -28,6 +19,8 @@ export const ColorInput = <T extends visualizationOptions>({
   defaultColor = '#000000',
   header,
 }: Props<T>) => {
+  const [selectedType, setSelectedType] = useState<null | number>(null);
+
   return (
     <ColorInputContainer as={motion.div} layout>
       {header && (
@@ -38,13 +31,13 @@ export const ColorInput = <T extends visualizationOptions>({
       <Switch
         isOn={waveOption[field] !== undefined}
         changeState={() => {
+          setSelectedType(null);
           setWaveOption((prevState) => {
             const newState = {
               ...prevState,
               [field]: prevState[field] === undefined ? defaultColor : undefined,
             } as T;
             if (newState[field] === undefined) {
-              // setSelectedType(4);
               delete newState[field];
             }
             return newState;
@@ -53,6 +46,8 @@ export const ColorInput = <T extends visualizationOptions>({
       />
 
       <ColorInputSettings
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
         isEnabled={waveOption[field] !== undefined}
         waveOption={waveOption}
         setWaveOption={setWaveOption}

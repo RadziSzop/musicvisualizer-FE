@@ -24,11 +24,7 @@ export const StyledDropZoneContainer = styled.div<Props>`
   justify-content: center;
   padding: 2rem;
   text-align: center;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
+  margin: auto;
   max-width: calc(100vw - 40px);
   max-height: calc(100vh - 40px);
   width: 100%;

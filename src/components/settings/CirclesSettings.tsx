@@ -1,12 +1,12 @@
 import { FrequencyBandInput } from '../inputs/FrequencyBandInput/FrequencyBandInput';
-import { GlowInput } from '../inputs/GlowInput';
+// import { GlowInput } from '../inputs/GlowInput';
 import { waveOptions } from '../../App';
 import { ICirclesOptions } from '@foobar404/wave';
 import { NumberInput } from '../inputs/NumberInput/NumberInput';
 import { ColorInput } from '../inputs/ColorInput/ColorInput';
 import { SaveButton } from '../inputs/SaveButton/SaveButton';
 import { visualizationOptions } from '../../types/settings';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;

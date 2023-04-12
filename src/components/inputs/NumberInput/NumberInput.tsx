@@ -1,4 +1,4 @@
-import { LayoutGroup, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Dispatch, SetStateAction } from 'react';
 import { visualizationOptions } from '../../../types/settings';
 import { Switch } from '../../Switch/Switch';

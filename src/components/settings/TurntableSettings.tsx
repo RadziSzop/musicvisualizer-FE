@@ -1,5 +1,5 @@
 import { FrequencyBandInput } from '../inputs/FrequencyBandInput/FrequencyBandInput';
-import { GlowInput } from '../inputs/GlowInput';
+// import { GlowInput } from '../inputs/GlowInput';
 import { waveOptions } from '../../App';
 import { ITurntableOptions } from '@foobar404/wave';
 import { NumberInput } from '../inputs/NumberInput/NumberInput';

@@ -1,6 +1,4 @@
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { visualizationOptions, visualizationType } from '../../types/settings';
+import { visualizationType } from '../../types/settings';
 import { StyledSelectContainer } from './StyledVisualizationSelect';
 import { VisualizationOption } from './VisualizationOption/VisualizationOption';
 import { TbChartArcs, TbPlaystationCircle, TbFlower, TbSquare, TbCircleDashed } from 'react-icons/tb';
@@ -8,9 +6,11 @@ import { HiOutlineCube } from 'react-icons/hi';
 import { RiCloudyLine, RiMenu4Line } from 'react-icons/ri';
 import { TfiShine } from 'react-icons/tfi';
 import { TiWaves } from 'react-icons/ti';
+import { VisallizerSettings } from './VisualizerSettings/VisualizerSettings';
+import { IoMdSettings } from 'react-icons/io';
 interface Props {
-  selectedType: visualizationType;
-  setSelectedType: React.Dispatch<React.SetStateAction<visualizationType>>;
+  selectedType: visualizationType | 'general';
+  setSelectedType: React.Dispatch<React.SetStateAction<visualizationType | 'general'>>;
 }
 export const VisualizationSelect = ({ setSelectedType, selectedType }: Props) => {
   return (
@@ -65,17 +65,9 @@ export const VisualizationSelect = ({ setSelectedType, selectedType }: Props) =>
       <VisualizationOption header="Wave" selectedType={selectedType} setSelectedType={setSelectedType} type={'Wave'}>
         <TiWaves size={40} />
       </VisualizationOption>
-      {/* //   layout
-    //   transition={{
-    //     layout: { duration: 0.3 },
-    //   }}
-    //   as={motion.div}
-    //   isSelected={type === selectedType}
-    //   onClick={() => {
-    //     setSelectedType(type);
-    //   }}
-    // >
-    //   {type} */}
+      <VisallizerSettings header="General" selectedType={selectedType} setSelectedType={setSelectedType}>
+        <IoMdSettings size={40} />
+      </VisallizerSettings>
     </StyledSelectContainer>
   );
 };

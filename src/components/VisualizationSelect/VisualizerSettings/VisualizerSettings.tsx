@@ -1,0 +1,25 @@
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
+import { visualizationType } from '../../../types/settings';
+import { StyledVisualizerSettingsContainer, StyledVisualizerSettingsHeader } from './StyledVisualizerSettings';
+interface Props {
+  children: ReactNode;
+  header: string;
+  selectedType: visualizationType | 'general';
+  setSelectedType: React.Dispatch<React.SetStateAction<visualizationType | 'general'>>;
+}
+export const VisallizerSettings = ({ children, header, selectedType, setSelectedType }: Props) => {
+  return (
+    <StyledVisualizerSettingsContainer
+      as={motion.div}
+      animate={selectedType === 'general' ? { backgroundColor: 'rgb(147, 148, 133)', scale: 1.05 } : {}}
+      whileHover={{ scale: 1.1, backgroundColor: 'rgb(191, 193, 173)' }}
+      onClick={() => {
+        setSelectedType('general');
+      }}
+    >
+      {children}
+      <StyledVisualizerSettingsHeader>{header}</StyledVisualizerSettingsHeader>
+    </StyledVisualizerSettingsContainer>
+  );
+};
