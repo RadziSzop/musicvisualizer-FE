@@ -2,28 +2,28 @@ import { useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { StyledDropZoneContainer } from './StyledDropZone';
 import { motion, useAnimationControls } from 'framer-motion';
+import toast from 'react-hot-toast';
+
 interface Props {
-  setSubmitedFile: React.Dispatch<React.SetStateAction<File[] | undefined>>;
+  setSubmitedFile: React.Dispatch<React.SetStateAction<File | undefined>>;
 }
 export const DropZone = ({ setSubmitedFile }: Props) => {
   const animationControler = useAnimationControls();
   const onDrop = useCallback((acceptedFile: File[]) => {
-    console.log(acceptedFile);
-
-    setSubmitedFile(acceptedFile);
+    setSubmitedFile(acceptedFile[0]);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
     onDrop,
+    onDropRejected: () => {
+      toast.error('You can upload one mp3 file');
+    },
     accept: {
       'audio/mpeg': ['mp3'],
     },
-    maxFiles: 10,
+    maxFiles: 1,
   });
   useEffect(() => {
-    // if (isDragAccept) {
-    //   animationControler.start('accept');
-    // } else
     if (isDragReject) {
       animationControler.start('reject');
     }
@@ -35,16 +35,6 @@ export const DropZone = ({ setSubmitedFile }: Props) => {
         x: { duration: 0.75 },
       },
     },
-    // accept: {
-    //   scale: [1, 1.01, 1],
-    //   transition: {
-    //     scale: {
-    //       type: 'spring',
-    //       duration: 0.5,
-    //       times: [0, 0.2, 1],
-    //     },
-    //   },
-    // },
   };
   return (
     <StyledDropZoneContainer
@@ -52,20 +42,16 @@ export const DropZone = ({ setSubmitedFile }: Props) => {
       {...getRootProps({ isDragAccept, isDragReject })}
       variants={containerVariatns}
       animate={animationControler}
-      // transition={{
-      //   type: 'spring',
-      //   stiffness: 50,
-      // }}
       exit={{
         opacity: 0,
-        y: ['-50%', '-47.5%', '-47.5%'],
-        x: ['-50%', '-50%'],
+        y: ['0%', '2.5%', '2.5%'],
+        x: ['0%', '0%'],
       }}
     >
       <input {...getInputProps()} />
       {isDragActive && isDragAccept && <p>Drop file here...</p>}
       {isDragActive && isDragReject && <p>Only mp3, try again...</p>}
-      {!isDragActive && <p>Drag drop some files here, or click to select files</p>}
+      {!isDragActive && <p>Drag drop mp3 file here, or click to select it</p>}
     </StyledDropZoneContainer>
   );
 };

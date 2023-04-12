@@ -24,14 +24,7 @@ export const StyledDropZoneContainer = styled.div<Props>`
   justify-content: center;
   padding: 2rem;
   text-align: center;
-  /* inset: 2rem; */
-  /* max-height: 720px; */
-  /* align-self: center; */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* max-width: 1240px;
-  max-height: 720px; */
+  margin: auto;
   max-width: calc(100vw - 40px);
   max-height: calc(100vh - 40px);
   width: 100%;
@@ -49,6 +42,11 @@ export const StyledDropZoneContainer = styled.div<Props>`
   @media (min-height: 760px) {
     & {
       max-height: 720px;
+    }
+  }
+  @media (min-width: 1320px) {
+    & {
+      max-width: 1280px;
     }
   }
 `;

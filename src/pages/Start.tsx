@@ -3,25 +3,22 @@ import { DropZone } from '../components/DropZone/DropZone';
 import Player from 'react-modern-audio-player';
 import { Wave } from '@foobar404/wave';
 import { Visualizer } from '../components/Visualizer/Visualizer';
-import { AnimatePresence, delay, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { waveOptions } from '../App';
+import { loadAnimations } from '../utils/utils';
+import { PlayList } from '../types/playlist';
+import { Recorder } from '../components/Recorder/Recorder';
+interface Props {
+  settings: waveOptions[];
+  submitedFile: File | undefined;
+  setSubmitedFile: React.Dispatch<React.SetStateAction<File | undefined>>;
+}
+console.log(Player);
 
-export const Start = () => {
-  const [canvasSize, setCanvasSize] = useState({
-    height: window.innerHeight - 100,
-    width: window.innerWidth,
-  });
-  useEffect(() => {
-    window.addEventListener('resize', () => {
-      setCanvasSize({
-        height: window.innerHeight - 100,
-        width: window.innerWidth,
-      });
-    });
-  }, []);
-  const [submitedFile, setSubmitedFile] = useState<File[] | undefined>();
-  const [playList, setPlayList] = useState([
+export const Start = ({ settings, setSubmitedFile, submitedFile }: Props) => {
+  const [playList, setPlayList] = useState<PlayList[]>([
     {
-      name: 'music - 1',
+      name: 'example music',
       img: 'https://cdn.pixabay.com/photo/2021/11/04/05/33/dome-6767422_960_720.jpg',
       src: 'https://cdn.pixabay.com/audio/2022/08/23/audio_d16737dc28.mp3',
       id: 1,
@@ -32,83 +29,31 @@ export const Start = () => {
   useEffect(() => {
     if (!submitedFile) {
       return;
-    }
-    console.log('creating new wave');
-    const newPlaylist = submitedFile.map((file, index) => {
-      return {
-        name: file.name,
-        img: 'https://cdn.pixabay.com/photo/2021/11/04/05/33/dome-6767422_960_720.jpg',
-        src: URL.createObjectURL(file),
-        id: index + 1,
-      };
-    });
+    } else {
+      const newPlaylist = [
+        {
+          name: submitedFile.name,
+          img: 'https://cdn.pixabay.com/photo/2021/11/04/05/33/dome-6767422_960_720.jpg',
+          src: URL.createObjectURL(submitedFile),
+          id: 1,
+        },
+      ];
 
-    setPlayList(newPlaylist);
+      setPlayList(newPlaylist);
+    }
     audioRef.current.crossOrigin = 'anonymous';
     const wave = new Wave(audioRef.current, canvasRef.current);
-
-    wave.addAnimation(
-      new wave.animations.Wave({
-        frequencyBand: 'base',
-        rounded: true,
-        count: 15,
-
-        fillColor: { gradient: ['rgb(119, 119, 119)', 'rgb(124, 124, 124)'], rotate: 44 },
-        lineColor: 'white',
-        lineWidth: 15,
-      }),
-    );
-    wave.addAnimation(
-      new wave.animations.Wave({
-        frequencyBand: 'lows',
-        rounded: true,
-        count: 20,
-        fillColor: { gradient: ['rgb(196, 197, 197)', 'rgb(68, 68, 68)', 'rgb(165, 165, 165)'], rotate: 300 },
-        lineColor: 'white',
-        lineWidth: 15,
-      }),
-    );
-
-    wave.addAnimation(
-      new wave.animations.Wave({
-        frequencyBand: 'mids',
-        rounded: true,
-        count: 35,
-        fillColor: { gradient: [' rgb(51, 51, 51)', 'rgb(172, 172, 172)'], rotate: 263 },
-        lineColor: 'white',
-        lineWidth: 15,
-      }),
-    );
-    wave.addAnimation(
-      new wave.animations.Wave({
-        frequencyBand: 'highs',
-        rounded: true,
-        count: 35,
-        fillColor: { gradient: [' rgb(80, 80, 80)', 'rgb(197, 197, 199)'], rotate: 352 },
-        lineColor: 'white',
-        lineWidth: 15,
-      }),
-    );
-
-    wave.addAnimation(
-      new wave.animations.Shine({
-        lineColor: 'white',
-        frequencyBand: 'lows',
-        rotate: 100,
-        offset: false,
-        lineWidth: 15,
-        rounded: true,
-      }),
-    );
+    loadAnimations(wave, settings);
+    return () => {
+      wave.clearAnimations();
+    };
   }, [submitedFile]);
 
   return (
     <>
       <AnimatePresence>{!submitedFile && <DropZone setSubmitedFile={setSubmitedFile} />}</AnimatePresence>
-
-      {submitedFile && <Visualizer canvasRef={canvasRef} canvasSize={canvasSize} setCanvasSize={setCanvasSize} />}
+      {submitedFile && <Visualizer canvasRef={canvasRef} />}
       {submitedFile && (
-        // TODO: Add disappearing of player
         <motion.div
           style={{ position: 'fixed', left: '0px' }}
           initial={{ opacity: 0 }}
@@ -119,20 +64,17 @@ export const Start = () => {
             audioRef={audioRef}
             activeUI={{
               all: true,
+              playList: false,
+              prevNnext: false,
             }}
             placement={{
               player: 'bottom',
             }}
-            // placement={{
-            //   player: 'bottom',
-            //   playList: 'bottom',
-            //   volumeSlider: 'bottom',
-            // }}
             audioInitialState={{ curPlayId: 1 }}
-            key={null}
           />
         </motion.div>
       )}
+      <Recorder canvas={canvasRef} audio={audioRef} submitedFile={submitedFile} />
     </>
   );
 };
