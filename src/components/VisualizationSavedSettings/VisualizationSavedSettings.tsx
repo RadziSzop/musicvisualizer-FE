@@ -20,8 +20,6 @@ export const VisualizationSavedSettings = ({ setSelectedType, settings, setCurre
     <>
       <StyledVisualizationSavedSettingsContainer>
         {settings.map((settingObject, id) => {
-          console.log(settingObject);
-
           return (
             <StyledVisualizationSavedSettingsItem
               key={id}

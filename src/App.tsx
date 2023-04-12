@@ -2,11 +2,12 @@ import { Route, Routes } from 'react-router-dom';
 import { Start } from './pages/Start';
 import { StyledAppContainer } from './components/StyledAppContainer';
 import { Settings } from './pages/Settings';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { visualizationOptions, visualizationType } from './types/settings';
 import { NavMenu } from './components/NavMenu/NavMenu';
 import { VisualizationContextValue } from './types/context';
 import { Toaster } from 'react-hot-toast';
+import { configureAxios } from './utils/utils';
 export interface waveOptions {
   type: visualizationType;
   options: visualizationOptions;
@@ -20,6 +21,9 @@ function App() {
     height: 1080,
     background: '#242424',
   });
+  useEffect(() => {
+    configureAxios();
+  }, []);
   return (
     <StyledAppContainer>
       <VisualizationContext.Provider value={{ visualizationSettings, setVisualizationSettings }}>

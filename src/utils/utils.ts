@@ -1,5 +1,7 @@
 import { Wave } from '@foobar404/wave';
 import { waveOptions } from '../App';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 export const loadAnimations = (wave: Wave, animations: waveOptions[]) => {
   if (animations.length > 0) {
@@ -43,5 +45,12 @@ export const loadAnimations = (wave: Wave, animations: waveOptions[]) => {
         frequencyBand: 'highs',
       }),
     );
+  }
+};
+export const configureAxios = () => {
+  if (import.meta.env.VITE_BACKENDURL) {
+    axios.defaults.baseURL = import.meta.env.VITE_BACKENDURL;
+  } else {
+    toast.error('Invalid env configuration');
   }
 };

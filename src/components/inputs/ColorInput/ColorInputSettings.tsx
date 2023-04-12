@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { visualizationOptions } from '../../../types/settings';
 import { GradientInput } from './Inputs/GradientInput';
 import { ImageInput } from './Inputs/ImageInput';
@@ -55,7 +55,6 @@ export const ColorInputSettings = <T extends visualizationOptions>({
               type="button"
               animate={selectedType === 1 ? { scale: 1.2, backgroundColor: '#3f3f3f' } : { scale: 1 }}
               onClick={() => {
-                console.log('click');
                 setSelectedType(1);
                 setWaveOption((prevState) => {
                   return { ...prevState, [field]: { gradient: ['#0be9f9', '#6d17ee'], rotate: 0 } };
