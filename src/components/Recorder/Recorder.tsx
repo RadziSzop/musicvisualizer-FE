@@ -12,8 +12,6 @@ export const Recorder = ({ canvas, audio, submitedFile }: Props) => {
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder>();
   useEffect(() => {
-    console.log('useEffect() called');
-    console.log(canvas.current);
     if (canvas.current === null || submitedFile === undefined) {
       return;
     }
@@ -27,8 +25,6 @@ export const Recorder = ({ canvas, audio, submitedFile }: Props) => {
       chunks.push(blob.data);
     };
     mediaRecorder.onstop = async () => {
-      console.log('stoped!');
-
       const blob = new Blob(chunks, {
         type: 'video/mp4',
       });
@@ -38,13 +34,11 @@ export const Recorder = ({ canvas, audio, submitedFile }: Props) => {
       formData.append('video', videoFile);
       formData.append('audio', submitedFile);
       formData.append('name', 'test');
-      const response = await axios.post('http://localhost:3000/merge', formData, {
+      const response = await axios.post('merge', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-        responseType: 'blob',
       });
-      console.log(response);
       const downloadLink = document.createElement('a');
       downloadLink.href = window.URL.createObjectURL(new Blob([response.data]));
       downloadLink.setAttribute('download', 'visualization.mp4');
@@ -56,32 +50,35 @@ export const Recorder = ({ canvas, audio, submitedFile }: Props) => {
     };
   }, [canvas.current]);
   return (
-    <StyledRecordButton
-      initial={{ x: -60, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      as={motion.div}
-      transition={{ x: { duration: 0.5 } }}
-      // transition={{ repeat: Infinity, duration: 1 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 1.05 }}
-    >
-      <BsFillRecordCircleFill
-        cursor={'pointer'}
-        size={30}
-        fill={isRecording ? 'red' : '#e3e3e3'}
-        onClick={() => {
-          if (!isRecording && audio.current !== null) {
-            setIsRecording(true);
-            mediaRecorder?.start();
-            audio.current.currentTime = 0;
-            audio.current.play();
-          } else {
-            audio.current.pause();
-            mediaRecorder?.stop();
-            setIsRecording(false);
-          }
-        }}
-      />
-    </StyledRecordButton>
+    <>
+      {submitedFile && import.meta.env.VITE_BACKENDURL && (
+        <StyledRecordButton
+          initial={{ x: -60, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          as={motion.div}
+          transition={{ x: { duration: 0.5 } }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 1.05 }}
+        >
+          <BsFillRecordCircleFill
+            cursor={'pointer'}
+            size={30}
+            fill={isRecording ? 'red' : '#e3e3e3'}
+            onClick={() => {
+              if (!isRecording && audio.current !== null) {
+                setIsRecording(true);
+                mediaRecorder?.start();
+                audio.current.currentTime = 0;
+                audio.current.play();
+              } else {
+                audio.current.pause();
+                mediaRecorder?.stop();
+                setIsRecording(false);
+              }
+            }}
+          />
+        </StyledRecordButton>
+      )}
+    </>
   );
 };

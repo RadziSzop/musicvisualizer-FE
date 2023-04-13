@@ -13,7 +13,6 @@ interface Props {
   submitedFile: File | undefined;
   setSubmitedFile: React.Dispatch<React.SetStateAction<File | undefined>>;
 }
-console.log(Player);
 
 export const Start = ({ settings, setSubmitedFile, submitedFile }: Props) => {
   const [playList, setPlayList] = useState<PlayList[]>([

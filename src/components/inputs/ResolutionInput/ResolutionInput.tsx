@@ -11,8 +11,6 @@ interface Props {
 }
 
 export const ResolutionInput = ({ setSettings, settings }: Props) => {
-  console.log(settings);
-
   return (
     <motion.div layout>
       <StyledResolutionInputHeader as={motion.h3} layout>
