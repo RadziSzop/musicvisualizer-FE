@@ -38,7 +38,6 @@ export const Recorder = ({ canvas, audio, submitedFile }: Props) => {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-        responseType: 'blob',
       });
       const downloadLink = document.createElement('a');
       downloadLink.href = window.URL.createObjectURL(new Blob([response.data]));
@@ -52,7 +51,7 @@ export const Recorder = ({ canvas, audio, submitedFile }: Props) => {
   }, [canvas.current]);
   return (
     <>
-      {submitedFile && (
+      {submitedFile && import.meta.env.VITE_BACKENDURL && (
         <StyledRecordButton
           initial={{ x: -60, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
