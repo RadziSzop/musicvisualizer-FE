@@ -8,8 +8,6 @@ Elevate Your Audio Experience: Advanced & Customizable Audio Visualizer
 Immerse Yourself in Music: Tailor-Made Audio Visualizations
 Sync Your Senses: Personalized Audio Visualizer Experience
 
-## Getting Started
-
 ## :wave: Live Demo
 
 https://musicvisualizer-fe.vercel.app/
@@ -33,6 +31,16 @@ yarn dev
 ```
 yarn build
 ```
+
+### Configuring aplication
+
+## TODO
+
+- [x] Dropzone for audio files
+- [x] Controls for uploaded file
+- [x] Visualizer for audio file
+- [x] Customization for visualizations
+- [x] Recorder for visualizations
 
 ## Made with:
 

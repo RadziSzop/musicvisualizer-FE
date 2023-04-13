@@ -50,7 +50,5 @@ export const loadAnimations = (wave: Wave, animations: waveOptions[]) => {
 export const configureAxios = () => {
   if (import.meta.env.VITE_BACKENDURL) {
     axios.defaults.baseURL = import.meta.env.VITE_BACKENDURL;
-  } else {
-    toast.error('Invalid env configuration');
   }
 };
