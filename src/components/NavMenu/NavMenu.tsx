@@ -22,6 +22,7 @@ export const NavMenu = ({ children, setSubmitedFile, submitedFile }: Props) => {
             <StyledNavMenuLink to={'/settings'}>
               <motion.div
                 layout
+                aria-label="Settings"
                 whileHover={{
                   scale: 1.1,
                 }}
@@ -43,6 +44,7 @@ export const NavMenu = ({ children, setSubmitedFile, submitedFile }: Props) => {
             <StyledNavMenuLink to={'/'}>
               <motion.div
                 layout
+                aria-label="Visualizer"
                 whileHover={{
                   scale: 1.05,
                 }}
@@ -65,6 +67,7 @@ export const NavMenu = ({ children, setSubmitedFile, submitedFile }: Props) => {
             <>
               <motion.div
                 layout
+                aria-label="Choose file"
                 onClick={() => {
                   setSubmitedFile(undefined);
                   navigate('/');

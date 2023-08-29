@@ -8,6 +8,8 @@ import { NavMenu } from './components/NavMenu/NavMenu';
 import { VisualizationContextValue } from './types/context';
 import { Toaster } from 'react-hot-toast';
 import { configureAxios } from './utils/utils';
+import { Analytics } from '@vercel/analytics/react';
+
 export interface waveOptions {
   type: visualizationType;
   options: visualizationOptions;
@@ -36,6 +38,7 @@ function App() {
           />
           <Route path="/settings" element={<Settings setSettings={setSettings} settings={settings} />} />
         </Routes>
+        <Analytics />
       </VisualizationContext.Provider>
     </StyledAppContainer>
   );
