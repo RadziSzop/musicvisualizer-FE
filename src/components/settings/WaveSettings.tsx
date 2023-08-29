@@ -9,6 +9,7 @@ import { SaveButton } from '../inputs/SaveButton/SaveButton';
 import { visualizationOptions } from '../../types/settings';
 import { PositionInput } from '../inputs/PositionInput/PositionInput';
 import { motion } from 'framer-motion';
+import { StyledSettingsContainer } from './StyledSettingsContainer';
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;
@@ -19,8 +20,11 @@ export const WaveSettings = ({ setSettings, currentSettings, setCurrentSettings 
   const waveSettings = currentSettings as IWaveOptions;
   const setWaveSettings = setCurrentSettings as React.Dispatch<React.SetStateAction<IWaveOptions>>;
   return (
-    <motion.div
-      animate={{ opacity: 1 }}
+    <StyledSettingsContainer
+      as={motion.div}
+      animate={{
+        opacity: 1,
+      }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{
@@ -38,6 +42,6 @@ export const WaveSettings = ({ setSettings, currentSettings, setCurrentSettings 
       <BooleanInput waveOption={waveSettings} setWaveOption={setWaveSettings} field="mirroredY" header="Mirrored Y" />
       <PositionInput waveOption={waveSettings} setWaveOption={setWaveSettings} />
       <SaveButton clearSettings={setWaveSettings} setSettings={setSettings} type="Wave" waveSettings={waveSettings} />
-    </motion.div>
+    </StyledSettingsContainer>
   );
 };

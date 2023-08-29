@@ -1,7 +1,6 @@
 import { Wave } from '@foobar404/wave';
 import { waveOptions } from '../App';
 import axios from 'axios';
-import { toast } from 'react-hot-toast';
 
 export const loadAnimations = (wave: Wave, animations: waveOptions[]) => {
   if (animations.length > 0) {

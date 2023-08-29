@@ -3,7 +3,7 @@ import { VisualizationSelect } from '../components/VisualizationSelect/Visualiza
 import { VisualizationSettings } from '../components/VisualizationSettings/VisualizationSettings';
 import { visualizationType, visualizationOptions } from '../types/settings';
 import { waveOptions } from '../App';
-import { LayoutGroup, motion } from 'framer-motion';
+import { LayoutGroup } from 'framer-motion';
 import { VisualizationSavedSettings } from '../components/VisualizationSavedSettings/VisualizationSavedSettings';
 interface Props {
   settings: waveOptions[];
@@ -14,7 +14,7 @@ export const Settings = ({ setSettings, settings }: Props) => {
   const [currentSettings, setCurrentSettings] = useState<visualizationOptions>({});
 
   return (
-    <motion.div>
+    <>
       <LayoutGroup>
         <VisualizationSavedSettings
           setSelectedType={setSelectedType}
@@ -22,14 +22,16 @@ export const Settings = ({ setSettings, settings }: Props) => {
           setSettings={setSettings}
           setCurrentSettings={setCurrentSettings}
         />
-        <VisualizationSelect setSelectedType={setSelectedType} selectedType={selectedType} />
-        <VisualizationSettings
-          selectedType={selectedType}
-          setSettings={setSettings}
-          currentSettings={currentSettings}
-          setCurrentSettings={setCurrentSettings}
-        />
+        <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+          <VisualizationSelect setSelectedType={setSelectedType} selectedType={selectedType} />
+          <VisualizationSettings
+            selectedType={selectedType}
+            setSettings={setSettings}
+            currentSettings={currentSettings}
+            setCurrentSettings={setCurrentSettings}
+          />
+        </div>
       </LayoutGroup>
-    </motion.div>
+    </>
   );
 };

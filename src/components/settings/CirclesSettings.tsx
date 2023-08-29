@@ -7,6 +7,7 @@ import { ColorInput } from '../inputs/ColorInput/ColorInput';
 import { SaveButton } from '../inputs/SaveButton/SaveButton';
 import { visualizationOptions } from '../../types/settings';
 import { motion } from 'framer-motion';
+import { StyledSettingsContainer } from './StyledSettingsContainer';
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;
@@ -17,8 +18,11 @@ export const CirclesSettings = ({ setSettings, currentSettings, setCurrentSettin
   const circleSettings = currentSettings as ICirclesOptions;
   const setCircleSettings = setCurrentSettings as React.Dispatch<React.SetStateAction<ICirclesOptions>>;
   return (
-    <motion.div
-      animate={{ opacity: 1 }}
+    <StyledSettingsContainer
+      as={motion.div}
+      animate={{
+        opacity: 1,
+      }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{
@@ -43,6 +47,6 @@ export const CirclesSettings = ({ setSettings, currentSettings, setCurrentSettin
         type="Circles"
         waveSettings={circleSettings}
       />
-    </motion.div>
+    </StyledSettingsContainer>
   );
 };

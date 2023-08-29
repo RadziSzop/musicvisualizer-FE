@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const ColorInputContainer = styled.div`
   margin-top: 30px;
+  margin-bottom: 10px;
 `;
 export const ColorInputSettingsContainer = styled.div`
   margin-top: 30px;

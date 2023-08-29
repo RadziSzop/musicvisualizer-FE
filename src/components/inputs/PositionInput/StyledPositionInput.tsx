@@ -14,6 +14,7 @@ export const StyledPositionInputContainer = styled.div`
 `;
 
 export const StyledPositionInputDirection = styled.div<StyledPositionInputDirectionProps>`
+  cursor: pointer;
   grid-area: ${({ position }) => position};
   width: 100%;
   height: 100%;

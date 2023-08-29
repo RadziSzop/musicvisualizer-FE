@@ -9,6 +9,7 @@ import { SaveButton } from '../inputs/SaveButton/SaveButton';
 import { visualizationOptions } from '../../types/settings';
 import { PositionInput } from '../inputs/PositionInput/PositionInput';
 import { motion } from 'framer-motion';
+import { StyledSettingsContainer } from './StyledSettingsContainer';
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;
@@ -19,8 +20,11 @@ export const SquareSettings = ({ setSettings, currentSettings, setCurrentSetting
   const squareSettings = currentSettings as ISquareOptions;
   const setSquareSettings = setCurrentSettings as React.Dispatch<React.SetStateAction<ISquareOptions>>;
   return (
-    <motion.div
-      animate={{ opacity: 1 }}
+    <StyledSettingsContainer
+      as={motion.div}
+      animate={{
+        opacity: 1,
+      }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{
@@ -45,6 +49,6 @@ export const SquareSettings = ({ setSettings, currentSettings, setCurrentSetting
         type="Square"
         waveSettings={squareSettings}
       />
-    </motion.div>
+    </StyledSettingsContainer>
   );
 };

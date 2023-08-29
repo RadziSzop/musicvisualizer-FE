@@ -15,6 +15,7 @@ export const SaveButton = ({ setSettings, clearSettings, type, waveSettings }: P
     <StyledSaveButton
       as={motion.input}
       type="button"
+      layout
       value="Save"
       onClick={() => {
         setSettings((prevState) => {

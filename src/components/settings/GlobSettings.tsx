@@ -8,6 +8,7 @@ import { ColorInput } from '../inputs/ColorInput/ColorInput';
 import { SaveButton } from '../inputs/SaveButton/SaveButton';
 import { visualizationOptions } from '../../types/settings';
 import { motion } from 'framer-motion';
+import { StyledSettingsContainer } from './StyledSettingsContainer';
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;
@@ -18,8 +19,11 @@ export const GlobSettings = ({ setSettings, currentSettings, setCurrentSettings 
   const globSettings = currentSettings as IGlobOptions;
   const setGlobSettings = setCurrentSettings as React.Dispatch<React.SetStateAction<IGlobOptions>>;
   return (
-    <motion.div
-      animate={{ opacity: 1 }}
+    <StyledSettingsContainer
+      as={motion.div}
+      animate={{
+        opacity: 1,
+      }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{
@@ -36,6 +40,6 @@ export const GlobSettings = ({ setSettings, currentSettings, setCurrentSettings 
       <BooleanInput waveOption={globSettings} setWaveOption={setGlobSettings} field="rounded" header="Rounded" />
       <BooleanInput waveOption={globSettings} setWaveOption={setGlobSettings} field="mirroredX" header="Mirrored X" />
       <SaveButton clearSettings={setGlobSettings} setSettings={setSettings} type="Glob" waveSettings={globSettings} />
-    </motion.div>
+    </StyledSettingsContainer>
   );
 };

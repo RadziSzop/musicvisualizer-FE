@@ -53,6 +53,7 @@ export const NumberInput = <T extends visualizationOptions>({
         <StyledNumberInput
           as={motion.input}
           layout
+          name={String(field)}
           type={'text'}
           min={1}
           step={1}

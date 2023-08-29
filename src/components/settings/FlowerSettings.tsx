@@ -8,6 +8,7 @@ import { ColorInput } from '../inputs/ColorInput/ColorInput';
 import { SaveButton } from '../inputs/SaveButton/SaveButton';
 import { visualizationOptions } from '../../types/settings';
 import { motion } from 'framer-motion';
+import { StyledSettingsContainer } from './StyledSettingsContainer';
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;
@@ -18,8 +19,11 @@ export const FlowerSettings = ({ setSettings, currentSettings, setCurrentSetting
   const flowerSettigns = currentSettings as IFlowerOptions;
   const setFlowerSettigns = setCurrentSettings as React.Dispatch<React.SetStateAction<IFlowerOptions>>;
   return (
-    <motion.div
-      animate={{ opacity: 1 }}
+    <StyledSettingsContainer
+      as={motion.div}
+      animate={{
+        opacity: 1,
+      }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{
@@ -46,6 +50,6 @@ export const FlowerSettings = ({ setSettings, currentSettings, setCurrentSetting
         type="Flower"
         waveSettings={flowerSettigns}
       />
-    </motion.div>
+    </StyledSettingsContainer>
   );
 };

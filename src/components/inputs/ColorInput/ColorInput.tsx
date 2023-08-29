@@ -22,7 +22,7 @@ export const ColorInput = <T extends visualizationOptions>({
   const [selectedType, setSelectedType] = useState<null | number>(null);
 
   return (
-    <ColorInputContainer as={motion.div} layout>
+    <ColorInputContainer as={motion.div}>
       {header && (
         <StyledColorInputHeader as={motion.h3} layout>
           {header}

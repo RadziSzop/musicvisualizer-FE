@@ -9,6 +9,7 @@ import { SaveButton } from '../inputs/SaveButton/SaveButton';
 import { visualizationOptions } from '../../types/settings';
 import { PositionInput } from '../inputs/PositionInput/PositionInput';
 import { motion } from 'framer-motion';
+import { StyledSettingsContainer } from './StyledSettingsContainer';
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;
@@ -19,8 +20,11 @@ export const ShineSettings = ({ setSettings, currentSettings, setCurrentSettings
   const shineSettings = currentSettings as IShineOptions;
   const setShineSettings = setCurrentSettings as React.Dispatch<React.SetStateAction<IShineOptions>>;
   return (
-    <motion.div
-      animate={{ opacity: 1 }}
+    <StyledSettingsContainer
+      as={motion.div}
+      animate={{
+        opacity: 1,
+      }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{
@@ -42,6 +46,6 @@ export const ShineSettings = ({ setSettings, currentSettings, setCurrentSettings
         type="Shine"
         waveSettings={shineSettings}
       />
-    </motion.div>
+    </StyledSettingsContainer>
   );
 };

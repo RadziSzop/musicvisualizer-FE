@@ -8,6 +8,7 @@ import { ColorInput } from '../inputs/ColorInput/ColorInput';
 import { SaveButton } from '../inputs/SaveButton/SaveButton';
 import { visualizationOptions } from '../../types/settings';
 import { motion } from 'framer-motion';
+import { StyledSettingsContainer } from './StyledSettingsContainer';
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;
@@ -18,8 +19,11 @@ export const ArcsSettings = ({ setSettings, currentSettings, setCurrentSettings 
   const arcsSettings = currentSettings as IArcsOptions;
   const setArcsSettings = setCurrentSettings as React.Dispatch<React.SetStateAction<IArcsOptions>>;
   return (
-    <motion.div
-      animate={{ opacity: 1 }}
+    <StyledSettingsContainer
+      as={motion.div}
+      animate={{
+        opacity: 1,
+      }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{
@@ -34,6 +38,6 @@ export const ArcsSettings = ({ setSettings, currentSettings, setCurrentSettings 
       <NumberInput waveOption={arcsSettings} setWaveOption={setArcsSettings} field="lineWidth" header="Line Width" />
       <BooleanInput waveOption={arcsSettings} setWaveOption={setArcsSettings} field="rounded" header="Rounded" />
       <SaveButton clearSettings={setArcsSettings} setSettings={setSettings} type="Arcs" waveSettings={arcsSettings} />
-    </motion.div>
+    </StyledSettingsContainer>
   );
 };

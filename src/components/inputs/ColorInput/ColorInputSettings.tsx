@@ -76,9 +76,13 @@ export const ColorInputSettings = <T extends visualizationOptions>({
             {selectedType === 0 && (
               <SimpleColorInput field={field} setWaveOption={setWaveOption} waveOption={waveOption} />
             )}
+          </AnimatePresence>
+          <AnimatePresence>
             {selectedType === 1 && (
               <GradientInput field={field} setWaveOption={setWaveOption} waveOption={waveOption} />
             )}
+          </AnimatePresence>
+          <AnimatePresence>
             {selectedType === 2 && <ImageInput field={field} setWaveOption={setWaveOption} waveOption={waveOption} />}
           </AnimatePresence>
         </motion.div>

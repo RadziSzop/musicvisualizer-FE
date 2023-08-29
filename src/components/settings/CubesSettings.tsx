@@ -9,6 +9,7 @@ import { visualizationOptions } from '../../types/settings';
 import { BooleanInput } from '../inputs/BooleanInput/BooleanInput';
 import { PositionInput } from '../inputs/PositionInput/PositionInput';
 import { motion } from 'framer-motion';
+import { StyledSettingsContainer } from './StyledSettingsContainer';
 interface Props {
   setSettings: React.Dispatch<React.SetStateAction<waveOptions[]>>;
   currentSettings: visualizationOptions;
@@ -19,8 +20,11 @@ export const CubesSettings = ({ setSettings, currentSettings, setCurrentSettings
   const cubesOptions = currentSettings as ICubesOptions;
   const setCubesOptions = setCurrentSettings as React.Dispatch<React.SetStateAction<ICubesOptions>>;
   return (
-    <motion.div
-      animate={{ opacity: 1 }}
+    <StyledSettingsContainer
+      as={motion.div}
+      animate={{
+        opacity: 1,
+      }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{
@@ -40,6 +44,6 @@ export const CubesSettings = ({ setSettings, currentSettings, setCurrentSettings
       <NumberInput waveOption={cubesOptions} setWaveOption={setCubesOptions} field="radius" header="Radius" />
       <PositionInput waveOption={cubesOptions} setWaveOption={setCubesOptions} />
       <SaveButton clearSettings={setCubesOptions} setSettings={setSettings} type="Cubes" waveSettings={cubesOptions} />
-    </motion.div>
+    </StyledSettingsContainer>
   );
 };

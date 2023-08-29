@@ -1,18 +1,15 @@
 import styled from 'styled-components';
 export const StyledVisualizationSettingsContainer = styled.div`
   margin-left: 200px;
+  position: relative;
   display: grid;
   height: 90vh;
-  padding: 1rem 4rem;
+  flex-grow: 1;
+
   grid-template-columns: 1fr;
-  @media (max-width: 700px) {
-    padding: 0;
-  }
+
   @media (max-width: 600px) {
     margin-left: 56px;
-  }
-  @media (max-width: 450px) {
-    padding: 0;
   }
 
   & > div {

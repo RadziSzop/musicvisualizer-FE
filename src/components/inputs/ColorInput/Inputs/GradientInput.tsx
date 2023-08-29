@@ -3,6 +3,7 @@ import { BsPlusCircleFill } from 'react-icons/bs';
 import { visualizationOptions } from '../../../../types/settings';
 import { ColorInputGradient, ColorPicker } from '../StyledColorInput';
 import { IoMdTrash } from 'react-icons/io';
+import { motion } from 'framer-motion';
 interface Props<T extends visualizationOptions> {
   setWaveOption: Dispatch<SetStateAction<T>>;
   waveOption: T;
@@ -23,7 +24,7 @@ type FillOption =
 export const GradientInput = <T extends visualizationOptions>({ waveOption, setWaveOption, field }: Props<T>) => {
   const [pickers, setPickers] = useState<Picker[]>([{ id: 0 }, { id: 1 }]);
   return (
-    <>
+    <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <ColorInputGradient
         backgroundColor={
           typeof (waveOption[field] as FillOption) !== 'string' &&
@@ -110,6 +111,6 @@ export const GradientInput = <T extends visualizationOptions>({ waveOption, setW
           </Fragment>
         );
       })}
-    </>
+    </motion.div>
   );
 };
