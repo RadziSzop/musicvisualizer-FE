@@ -19,10 +19,9 @@ export const NavMenu = ({ children, setSubmitedFile, submitedFile }: Props) => {
       <LayoutGroup>
         <AnimatePresence>
           {location.pathname === '/' && (
-            <StyledNavMenuLink to={'/settings'}>
+            <StyledNavMenuLink to={'/settings'} aria-label="Settings">
               <motion.div
                 layout
-                aria-label="Settings"
                 whileHover={{
                   scale: 1.1,
                 }}
@@ -41,10 +40,9 @@ export const NavMenu = ({ children, setSubmitedFile, submitedFile }: Props) => {
         </AnimatePresence>
         <AnimatePresence>
           {location.pathname === '/settings' && (
-            <StyledNavMenuLink to={'/'}>
+            <StyledNavMenuLink to={'/'} aria-label="Visualizer">
               <motion.div
                 layout
-                aria-label="Visualizer"
                 whileHover={{
                   scale: 1.05,
                 }}
@@ -65,9 +63,10 @@ export const NavMenu = ({ children, setSubmitedFile, submitedFile }: Props) => {
         <AnimatePresence>
           {submitedFile && (
             <>
-              <motion.div
+              <motion.a
                 layout
-                aria-label="Choose file"
+                style={{ cursor: 'pointer' }}
+                aria-label="Choose a new file"
                 onClick={() => {
                   setSubmitedFile(undefined);
                   navigate('/');
@@ -84,7 +83,7 @@ export const NavMenu = ({ children, setSubmitedFile, submitedFile }: Props) => {
                 transition={{ duration: 0.5 }}
               >
                 <FaFileAudio size={36} />
-              </motion.div>
+              </motion.a>
             </>
           )}
         </AnimatePresence>
